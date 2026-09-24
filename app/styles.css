@@ -1,0 +1,176 @@
+:root{
+  --cream:#fff1f4; --paper:#fffaf9; --rose:#d8899d; --rose2:#f2c5d0;
+  --brown:#6e5147; --ink:#4f403b; --sage:#9aa88d; --line:#ead8cf;
+  --ok:#738b68; --warn:#c48d53; --bad:#a76565; --shadow:0 8px 24px rgba(93,63,53,.08);
+  font-family: ui-rounded, "Avenir Next", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#f8dfe5 0,#fff1f4 28%,#fff8f6 100%);color:var(--ink)}
+button,input,select{font:inherit}
+button{cursor:pointer}
+#app{min-height:100vh;padding-bottom:82px}
+.topbar{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:18px 18px 14px;background:rgba(251,245,237,.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(234,216,207,.7)}
+.brand{font-family:"Brush Script MT","Segoe Script",cursive;font-size:36px;color:var(--brown);line-height:1}
+.brand span{color:var(--rose)}
+.subtitle{font-size:12px;color:#8e746a;margin-top:5px}
+.icon-btn{border:0;background:#fff5f1;border-radius:50%;width:42px;height:42px;color:var(--brown);font-size:21px;box-shadow:var(--shadow)}
+main{max-width:900px;margin:0 auto;padding:18px}
+.view{display:none}.view.active{display:block}
+.hero{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero-emoji{font-size:27px;margin-bottom:5px}.section-emoji{font-size:25px;margin-bottom:2px}.day-heading{display:flex;align-items:center;justify-content:space-between;gap:10px}.empty-slot{opacity:.75;background:#fffaf6}.hero:after{content:"✿  ♡  ✦";position:absolute;right:18px;top:15px;color:var(--rose2);font-size:24px}
+h1,h2,h3{margin:0 0 8px}.script{font-family:"Brush Script MT","Segoe Script",cursive}
+h1{font-size:30px;color:var(--brown)} h2{font-size:22px} h3{font-size:17px}
+.section-title{display:flex;align-items:center;justify-content:space-between;margin:24px 2px 10px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:15px;box-shadow:var(--shadow)}
+.grid{display:grid;gap:12px}.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.recipe-card{position:relative;min-height:120px}.recipe-card.disabled{opacity:.48;filter:saturate(.55)}
+.recipe-head{display:flex;gap:12px;align-items:flex-start}.recipe-icon{width:46px;height:46px;display:grid;place-items:center;background:#f7dfdc;border-radius:14px;font-size:25px;flex:none}
+.meta{font-size:12px;color:#8e746a}.muted{color:#977e74}.small{font-size:12px}
+.badge{display:inline-flex;align-items:center;gap:5px;padding:5px 9px;border-radius:999px;font-size:11px;font-weight:700}
+.badge.ok{background:#e4eadf;color:#5d7654}.badge.warn{background:#f7ead8;color:#9a6a39}.badge.bad{background:#f2dddd;color:#8e5050}
+.btn{border:0;border-radius:13px;padding:11px 14px;font-weight:700;color:white;background:var(--rose);box-shadow:0 4px 10px rgba(190,117,120,.18)}
+.btn.secondary{background:#f2dfdb;color:var(--brown);box-shadow:none}.btn.ghost{background:transparent;color:var(--brown);border:1px solid var(--line);box-shadow:none}
+.btn.full{width:100%}.btn:disabled{opacity:.5;cursor:not-allowed}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}.stat{background:#fff5ef;border:1px solid var(--line);border-radius:15px;padding:12px}.stat strong{display:block;font-size:22px;color:var(--brown)}
+.list{display:grid;gap:8px}.row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px dashed var(--line)}.row:last-child{border-bottom:0}
+.quantity{font-weight:800;color:var(--brown)}
+.search{width:100%;padding:13px 15px;border-radius:14px;border:1px solid var(--line);background:#fffdf9;outline:none}.search:focus{border-color:var(--rose)}
+.filters{display:flex;gap:8px;overflow:auto;padding:10px 0}.pill{border:1px solid var(--line);background:#fffaf5;color:var(--brown);padding:8px 12px;border-radius:999px;white-space:nowrap}.pill.active{background:var(--brown);color:white;border-color:var(--brown)}
+.progress{height:8px;background:#f0e3dc;border-radius:99px;overflow:hidden;margin-top:8px}.progress>i{display:block;height:100%;background:var(--sage)}
+.empty{text-align:center;padding:35px 15px;color:#927a71}
+.bottom-nav{position:fixed;z-index:20;bottom:0;left:0;right:0;height:76px;background:rgba(255,250,245,.96);backdrop-filter:blur(14px);border-top:1px solid var(--line);display:flex;justify-content:center;gap:2px;padding:8px max(8px,env(safe-area-inset-left)) calc(8px + env(safe-area-inset-bottom))}
+.nav-btn{flex:1;max-width:130px;border:0;background:transparent;color:#987d73;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border-radius:14px}.nav-btn span{font-size:21px}.nav-btn small{font-size:10px}.nav-btn.active{background:#f8e2df;color:var(--brown);font-weight:800}
+.modal-backdrop{position:fixed;inset:0;z-index:50;background:rgba(64,45,40,.38);display:grid;align-items:end}.modal{background:var(--paper);border-radius:25px 25px 0 0;max-height:92vh;overflow:auto;padding:20px;box-shadow:0 -12px 40px rgba(0,0,0,.12)}.modal h2{padding-right:35px}.close{position:absolute;right:18px;top:15px;border:0;background:#f4e5df;border-radius:50%;width:38px;height:38px}.form{display:grid;gap:11px}.form label{font-size:12px;font-weight:800}.form input,.form select{width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fffdf9}.ingredient-line{display:grid;grid-template-columns:1fr 90px 80px 38px;gap:7px;align-items:center}.ingredient-line input,.ingredient-line select{padding:9px!important}.day-card{display:grid;gap:8px}.meal-slot{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px;border-radius:12px;background:#fff5ef;border:1px solid var(--line)}.meal-slot button{border:0;background:transparent;text-align:left;color:var(--brown);font-weight:700;flex:1}.check{width:21px;height:21px;accent-color:var(--rose)}
+@media(max-width:650px){main{padding:14px}.grid-2,.grid-3{grid-template-columns:1fr}.stat-row{grid-template-columns:repeat(3,1fr)}.brand{font-size:32px}.ingredient-line{grid-template-columns:1fr 70px 70px 34px}}
+
+.shopping-row{align-items:center}
+.purchase-field{display:flex;align-items:end;gap:5px;flex:none}
+.purchase-field span:first-child{display:block}
+.purchase-field input{width:78px;padding:9px 7px;border:1px solid var(--line);border-radius:10px;background:#fffdf9;color:var(--brown);font-weight:800}
+.purchase-field .small{font-size:10px;color:#977e74}
+@media(max-width:430px){.shopping-row{align-items:flex-start}.purchase-field{flex-direction:column;align-items:flex-end;gap:2px}.purchase-field input{width:72px}}
+
+.section-emoji{font-size:25px;margin-bottom:1px}
+.shopping-category{margin:15px 0}
+.shopping-category h3{color:var(--brown);font-family:"Brush Script MT","Segoe Script",cursive;font-size:22px}
+.cake-row{align-items:center;flex-wrap:wrap}
+.cake-row .actions{margin-top:0}
+
+.calendar-heading{margin-top:24px}
+.calendar-wrap{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:10px;box-shadow:var(--shadow)}
+.calendar-weekdays,.calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.calendar-weekdays{margin-bottom:5px}
+.calendar-weekdays span{text-align:center;font-size:11px;font-weight:800;color:#987d73;padding:6px 0}
+.calendar-cell{min-height:105px;border:1px solid #eeded8;background:#fffdf9;border-radius:13px;padding:8px;text-align:left;color:var(--ink);overflow:hidden}
+.calendar-cell:hover{border-color:var(--rose)}
+.calendar-cell.today{background:#fae7e9;border-color:var(--rose)}
+.calendar-day{display:block;font-weight:900;font-size:14px;margin-bottom:6px}
+.calendar-meals{display:grid;gap:4px}
+.calendar-meal{display:block;padding:5px 5px;border-radius:8px;background:#f8e7e3;font-size:10px;line-height:1.15;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.calendar-meal.done{opacity:.58;text-decoration:line-through}
+.calendar-meal i{font-style:normal;margin-right:3px}
+.calendar-empty{font-size:10px;color:#b0958b}
+.empty-cell{background:transparent;border-color:transparent;box-shadow:none}
+.day-detail-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 0;border-bottom:1px dashed var(--line)}
+.day-detail-row:last-child{border-bottom:0}
+.day-detail-row .actions{margin-top:0;justify-content:flex-end}
+@media(max-width:650px){
+ .calendar-cell{min-height:86px;padding:6px}.calendar-meal{font-size:9px;padding:4px}.calendar-weekdays span{font-size:10px}
+}
+@media(max-width:430px){
+ .calendar-cell{min-height:78px}.calendar-day{font-size:12px}.calendar-meal{font-size:8px}
+ .calendar-wrap{padding:7px}.calendar-grid,.calendar-weekdays{gap:3px}
+}
+/* V1.5 annual planning calendar */
+.annual-calendar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.month-calendar{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:12px;box-shadow:var(--shadow)}
+.month-title{display:flex;justify-content:space-between;align-items:center;margin:2px 4px 8px}.month-title h2{font-size:20px;text-transform:capitalize;color:var(--brown)}
+.month-calendar .calendar-cell{min-height:74px;padding:6px}.month-calendar .calendar-meal{font-size:9px}.month-calendar .calendar-day{font-size:12px}
+.calendar-cell.past-day{background:#eee9e7;border-color:#e4dcd8;color:#9d8c86;opacity:.55;cursor:pointer}.calendar-cell.past-day .calendar-meal{background:#e6dfdc;color:#8f817c}.calendar-cell.today{box-shadow:inset 0 0 0 2px var(--rose);opacity:1}
+@media(max-width:700px){.annual-calendar{grid-template-columns:1fr}.month-calendar .calendar-cell{min-height:78px}.month-calendar .calendar-meal{font-size:9px}}
+
+.calendar-heading{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.calendar-arrow{border:0;background:#f8e2df;color:var(--brown);width:38px;height:38px;border-radius:50%;font-size:27px;line-height:1}
+.calendar-nav-right{display:flex;align-items:center;gap:7px}
+.calendar-today{border:1px solid var(--line);background:#fffaf5;color:var(--brown);padding:8px 11px;border-radius:999px;font-size:11px;font-weight:800}
+.calendar-cell.past{opacity:.42;background:#eee9e6;border-color:#e3dbd7}
+.calendar-cell.past .calendar-meal{background:#e5dfdc}
+
+/* V1.5.2 — Gâteaux organisés par mois dans un encart horizontal */
+.cakes-panel{margin:18px 0 24px;background:linear-gradient(135deg,#fff8f4,#fff2f1);border:1px solid var(--line);border-radius:24px;padding:16px;box-shadow:var(--shadow)}
+.cakes-panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.cakes-panel-head h2{margin:0;color:var(--brown)}
+.cakes-panel-head .muted{margin:3px 0 0;font-size:12px}.cakes-month-nav{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;padding:9px 10px;background:#fffaf7;border:1px solid var(--line);border-radius:16px;color:var(--brown)}
+.cakes-month-nav strong{text-transform:capitalize;font-size:16px}.cake-nav-right{display:flex;align-items:center;gap:8px}.cake-count{font-size:11px;color:#987d73;font-weight:700}.cakes-scroller{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:12px 2px 4px;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}.cakes-scroller::-webkit-scrollbar{height:5px}.cakes-scroller::-webkit-scrollbar-thumb{background:#e6c9c4;border-radius:99px}.cake-card{flex:0 0 min(84%,330px);scroll-snap-align:start;background:#fffdf9;border:1px solid var(--line);border-radius:19px;padding:13px;display:grid;grid-template-columns:46px 1fr;gap:10px;box-shadow:0 4px 12px rgba(130,90,80,.06)}.cake-card-icon{width:46px;height:46px;display:grid;place-items:center;background:#f7dfdc;border-radius:14px;font-size:25px}.cake-card-body{min-width:0}.cake-card-body>b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--brown)}.cake-ok{color:#5d7654;margin-top:5px}.cake-missing{color:#9a6a39;margin-top:5px}.cake-card-actions{grid-column:1/-1;display:flex;gap:7px;flex-wrap:wrap}.cake-card-actions .btn,.cake-card-actions .pill{font-size:11px}.cake-empty{text-align:center;padding:20px 10px 12px;color:#927a71;font-size:13px}.cakes-panel .section-emoji{margin-bottom:0}
+@media(max-width:500px){.cakes-panel{padding:13px}.cakes-panel-head .btn{padding:9px 11px}.cake-card{flex-basis:88%}.cakes-month-nav strong{font-size:14px}.cake-count{display:none}}
+
+/* Stock: sous-catégories nettement séparées des ingrédients */
+.stock-subcategory{
+  margin:18px 0 8px;
+  padding:8px 12px;
+  font-size:18px;
+  font-weight:800;
+  line-height:1.2;
+  color:var(--brown);
+  background:rgba(245,190,205,.18);
+  border-left:4px solid var(--pink);
+  border-radius:10px;
+}
+
+
+/* V1.5.5 — ouverture Mamouni : transition courte et légère */
+.splash{
+  position:fixed;inset:0;z-index:1000;display:grid;place-items:center;overflow:hidden;
+  background:linear-gradient(160deg,#f7d9e1 0%,#fff0f3 52%,#fff8f5 100%);
+  transition:opacity .42s ease,visibility .42s ease;
+}
+.splash.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
+.splash-card{position:relative;z-index:2;text-align:center;animation:splashIn .85s cubic-bezier(.2,.75,.25,1) both}
+.splash-mark{
+  width:92px;height:92px;margin:0 auto 13px;display:grid;place-items:center;
+  border-radius:27px;background:#d8899d;color:#fffaf9;
+  font-family:ui-rounded,"Avenir Next",system-ui,sans-serif;font-size:57px;font-weight:800;
+  box-shadow:0 14px 32px rgba(139,83,98,.16);transform:rotate(-3deg);
+  animation:splashMark .95s cubic-bezier(.2,.8,.2,1) both;
+}
+.splash-mark span{font-family:"Brush Script MT","Segoe Script",cursive;font-size:25px;margin-left:-4px;margin-top:-31px;color:#fff1f4}
+.splash-title{font-family:"Brush Script MT","Segoe Script",cursive;font-size:46px;line-height:1;color:#6e5147;letter-spacing:.2px}
+.splash-subtitle{margin-top:9px;font-size:12px;color:#8e746a;opacity:0;animation:splashText .55s .3s ease both}
+.splash-orbit{position:absolute;border-radius:50%;border:1px solid rgba(216,137,157,.18);animation:splashFloat 2.2s ease-in-out infinite alternate}
+.splash-orbit-1{width:230px;height:230px;top:13%;left:-90px}
+.splash-orbit-2{width:310px;height:310px;right:-140px;bottom:-100px;animation-delay:-.8s}
+@keyframes splashIn{from{opacity:0;transform:translateY(10px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes splashMark{from{opacity:0;transform:rotate(-10deg) scale(.72)}65%{transform:rotate(1deg) scale(1.04)}to{opacity:1;transform:rotate(-3deg) scale(1)}}
+@keyframes splashText{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@keyframes splashFloat{from{transform:translate(0,0) scale(.98)}to{transform:translate(12px,-8px) scale(1.02)}}
+@media(prefers-reduced-motion:reduce){.splash-card,.splash-mark,.splash-subtitle,.splash-orbit{animation:none}.splash-subtitle{opacity:1}}
+
+/* VDEF — direction artistique : moderne + touche carnet vintage + saisons */
+:root{--font-display:Georgia,"Times New Roman",serif;--font-arabic:"Noto Naskh Arabic","Amiri",serif}
+body{background:#fbf5ef}
+.topbar{align-items:center}
+.top-actions{display:flex;align-items:center;gap:6px}
+.brand{font-family:var(--font-arabic),serif;font-size:27px;font-weight:800;letter-spacing:.02em;color:var(--brown)}
+.brand span{font-family:system-ui;font-size:15px;color:var(--pink)}
+.hero h1,.section-title h1,.section-title h2,.modal h2,.modal h3{font-family:var(--font-display),serif}
+.hero{border-radius:28px;border:1px solid var(--line);box-shadow:var(--shadow);background:linear-gradient(145deg,#fffaf6,#f9e9e9);position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;inset:10px;border:1px dashed rgba(121,91,81,.14);border-radius:22px;pointer-events:none}
+.converter-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:16px 0}
+.converter-result{padding:18px;border-radius:18px;background:#f8e4e6;border:1px solid var(--line);font-size:20px;font-weight:900;text-align:center;color:var(--brown)}
+.converter-note{margin-top:12px;background:#fffaf6}
+.season-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+.season-option{border:1px solid var(--line);background:#fffaf6;color:var(--brown);border-radius:16px;padding:14px;font-weight:800}
+.season-option.active{outline:2px solid var(--pink);background:#fae6e8}
+body[data-season="spring"]{--rose:#d98da0;--pink:#d98da0;--paper:#fffdf8}
+body[data-season="summer"]{--rose:#df9d62;--pink:#e7ad73;--paper:#fffdf5}
+body[data-season="autumn"]{--rose:#bd7c64;--pink:#c99172;--paper:#fffaf4}
+body[data-season="winter"]{--rose:#9b9fbe;--pink:#b5aac9;--paper:#fcfbfa}
+body[data-season="summer"] .hero{background:linear-gradient(145deg,#fffaf0,#fff0d9)}
+body[data-season="autumn"] .hero{background:linear-gradient(145deg,#fffaf3,#f5e5dc)}
+body[data-season="winter"] .hero{background:linear-gradient(145deg,#fbfbff,#eeeef7)}
+body[data-season="summer"] .cakes-panel{background:linear-gradient(135deg,#fffaf1,#fff2df)}
+body[data-season="autumn"] .cakes-panel{background:linear-gradient(135deg,#fff9f1,#f8e8df)}
+body[data-season="winter"] .cakes-panel{background:linear-gradient(135deg,#fbfbff,#f0eef8)}
+@media(max-width:600px){.converter-grid{grid-template-columns:1fr 1fr}.converter-grid label:first-child{grid-column:1/-1}.brand{font-size:24px}}
+/* VDEF final boot safety */
+.splash{transition:opacity .28s ease,visibility .28s ease}

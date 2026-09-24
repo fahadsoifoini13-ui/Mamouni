@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f6e7e5">
+  <meta name="description" content="مَطْبَخ — recettes, stock, menus et liste de courses.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css?v=vdef-final-4">
+  <title>مَطْبَخ — Carnet de cuisine</title>
+</head>
+<body>
+  <!-- Écran d'ouverture léger : affiché avant l'initialisation de l'application. -->
+  <div id="splash" class="splash" aria-label="Ouverture de Matbakh">
+    <div class="splash-orbit splash-orbit-1"></div>
+    <div class="splash-orbit splash-orbit-2"></div>
+    <div class="splash-card">
+      <div class="splash-mark" dir="rtl">م<span>♡</span></div>
+      <div class="splash-title" dir="rtl">مَطْبَخ</div>
+      <div class="splash-subtitle">Carnet de cuisine de la maison</div>
+    </div>
+  </div>
+
+  <div id="app">
+    <header class="topbar">
+      <div>
+        <div class="brand" dir="rtl">مَطْبَخ <span>♡</span></div>
+        <div class="subtitle">Carnet de cuisine de la maison</div>
+      </div>
+      <div class="top-actions"><button class="icon-btn" onclick="showConverter()" title="Convertisseur">↔</button><button class="icon-btn" onclick="showSeasonPicker()" title="Changer la saison">🌿</button><button class="icon-btn" onclick="showDataManager()" title="Sauvegarder ou restaurer">💾</button></div>
+    </header>
+
+    <main id="main">
+      <section id="home" class="view active"></section>
+      <section id="meals" class="view"></section>
+      <section id="recipes" class="view"></section>
+      <section id="stock" class="view"></section>
+      <section id="shopping" class="view"></section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button data-view="home" class="nav-btn active"><span>🏠</span><small>Accueil</small></button>
+      <button data-view="meals" class="nav-btn"><span>📅</span><small>Mes repas</small></button>
+      <button data-view="recipes" class="nav-btn"><span>🍳</span><small>Recettes</small></button>
+      <button data-view="stock" class="nav-btn"><span>🧺</span><small>Stock</small></button>
+      <button data-view="shopping" class="nav-btn"><span>🛒</span><small>Courses</small></button>
+    </nav>
+  </div>
+
+  <div id="modalRoot"></div>
+  <script>
+  // Filet de sécurité : même si le JavaScript applicatif ne se charge pas,
+  // l'écran d'ouverture ne peut pas rester bloqué indéfiniment.
+  window.__matbakhBootStart = performance.now();
+  window.__matbakhBootFinished = false;
+  window.addEventListener('error', function(event){
+    if(window.__matbakhBootFinished) return;
+    var main=document.getElementById('main');
+    var splash=document.getElementById('splash');
+    if(splash) splash.classList.add('is-hidden');
+    if(main && !main.dataset.fatal){
+      main.dataset.fatal='1';
+      var msg=(event && event.error && event.error.message) || (event && event.message) || 'Erreur JavaScript inconnue';
+      main.innerHTML='<div class="card empty"><h2>Un problème est survenu au démarrage</h2><p class="muted">'+String(msg).replace(/[&<>"']/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]})+'</p><button class="btn" onclick="location.reload()">Recharger</button></div>';
+    }
+  });
+  window.setTimeout(function(){
+    var splash=document.getElementById('splash');
+    if(splash && !window.__matbakhBootFinished){ splash.classList.add('is-hidden'); }
+  }, 1400);
+  window.setTimeout(function(){
+    if(window.__matbakhBootFinished) return;
+    var main=document.getElementById('main');
+    if(main && !main.dataset.fatal && !main.querySelector('.view:not(:empty)')){
+      main.dataset.fatal='1';
+      main.innerHTML='<div class="card empty"><h2>Matbakh met plus de temps que prévu</h2><p class="muted">La base locale ou le script de l’application n’a pas terminé son chargement. Rechargez la page. Si le problème revient, fermez les autres onglets Matbakh puis rechargez.</p><button class="btn" onclick="location.reload()">Recharger</button></div>';
+    }
+  }, 3800);
+</script>
+<script src="app.js?v=vdef-final-4"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+# Données domestiques et sauvegardes : ne jamais pousser vers un dépôt distant
+/data-reference/*.json
+/recovery/*
+
+# Secrets et fichiers locaux
+.env
+.env.*
+!.env.example
+.DS_Store
+node_modules/

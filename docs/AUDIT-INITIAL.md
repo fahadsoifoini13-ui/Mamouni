@@ -20,15 +20,18 @@ L’archive fournit une app web statique : `index.html`, `styles.css`, `app.js`,
 
 1. `seed()` ajoute recettes, stock et gâteaux de démonstration si chaque compartiment correspondant est vide. Un import partiel ou des recettes vides peut donc faire réapparaître les données d’exemple.
 2. L’interface précise que Safari et l’app installée sur l’écran d’accueil peuvent avoir des stockages séparés. La sauvegarde exportée est le pont de transfert ; ne pas supposer qu’une mise à jour du code synchronise les données.
-3. L’import remplace les compartiments locaux après confirmation et tente de sauvegarder l’état précédent dans `localStorage`. Il faut examiner précisément l’ordre et les cas d’échec avant de s’appuyer dessus comme restauration garantie.
-4. Le service worker met en cache l’app shell et supprime les anciens caches à l’activation. Les mises à jour doivent être vérifiées sur une copie de test pour éviter un mélange de code et de stockage local.
-5. Le bouton de réinitialisation recharge les données de démonstration. Il ne doit jamais être utilisé sur l’iPhone réel pendant l’audit.
-6. Le README fourni ne correspond pas entièrement aux marqueurs de version présents dans le code.
+3. L’import remplace les compartiments un par un, ligne par ligne. Il tente de mettre une copie de l’état actuel dans `localStorage`, mais ignore une éventuelle erreur d’écriture. Cette copie n’est pas un export téléchargeable. Une erreur en milieu d’import pourrait donc laisser un état partiel ; ne pas considérer ce mécanisme comme une restauration garantie.
+4. Après l’import, `rebuildShopping()` supprime les lignes de courses dont le type n’est pas `other`, puis les recalcule depuis les repas planifiés à venir et les gâteaux prévus. Les courses exportées ne sont donc pas restaurées à l’identique. Dans le fichier fourni, les 36 lignes de courses sont de type `food` et seront recalculées.
+5. Au démarrage, `seed()` crée aussi un planning mensuel s’il n’y a aucun repas. Ce planning est généré avec les recettes présentes, même si les magasins de recettes ou stock ont été remplacés.
+6. Le service worker met en cache l’app shell et supprime les anciens caches à l’activation. Les mises à jour doivent être vérifiées sur une copie de test pour éviter un mélange de code et de stockage local.
+7. Le bouton de réinitialisation supprime la base locale `mamouni-v1`, puis recharge les données de démonstration. Il ne doit jamais être utilisé sur l’iPhone réel pendant l’audit.
+8. Le README fourni ne correspond pas entièrement aux marqueurs de version présents dans le code.
 
 ## Vérifications de structure effectuées
 
 - Les données de référence contiennent 242 lignes d’ingrédients dans les 47 recettes.
 - Aucun des 64 repas exportés ne référence un identifiant de recette absent.
+- Les 64 repas couvrent le 1er septembre au 2 octobre 2026 ; c’est un instantané du planning, pas un planning durable.
 - Il s’agit d’un contrôle structurel uniquement, pas d’une vérification culinaire ou d’un test sur iPhone.
 
 Aucun fichier applicatif ni donnée de production n’a été modifié pendant cet état des lieux. Aucun test automatisé ou déploiement n’a été lancé.

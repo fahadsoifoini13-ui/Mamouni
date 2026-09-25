@@ -2,13 +2,14 @@
   --cream:#fff1f4; --paper:#fffaf9; --rose:#d8899d; --rose2:#f2c5d0;
   --brown:#6e5147; --ink:#4f403b; --sage:#9aa88d; --line:#ead8cf;
   --ok:#738b68; --warn:#c48d53; --bad:#a76565; --shadow:0 8px 24px rgba(93,63,53,.08);
+  --ambience-background:linear-gradient(180deg,#f8dfe5 0,#fff1f4 28%,#fff8f6 100%);
   font-family: ui-rounded, "Avenir Next", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 *{box-sizing:border-box}
-body{margin:0;background:linear-gradient(180deg,#f8dfe5 0,#fff1f4 28%,#fff8f6 100%);color:var(--ink)}
+body{margin:0;background:var(--ambience-background);color:var(--ink)}
 button,input,select{font:inherit}
 button{cursor:pointer}
-#app{min-height:100vh;padding-bottom:82px}
+#app{position:relative;z-index:1;min-height:100vh;padding-bottom:82px}
 .topbar{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:18px 18px 14px;background:rgba(251,245,237,.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(234,216,207,.7)}
 .brand{font-family:"Brush Script MT","Segoe Script",cursive;font-size:36px;color:var(--brown);line-height:1}
 .brand span{color:var(--rose)}
@@ -147,7 +148,7 @@ h1{font-size:30px;color:var(--brown)} h2{font-size:22px} h3{font-size:17px}
 
 /* VDEF — direction artistique : moderne + touche carnet vintage + saisons */
 :root{--font-display:Georgia,"Times New Roman",serif;--font-arabic:"Noto Naskh Arabic","Amiri",serif}
-body{background:#fbf5ef}
+body{background:var(--ambience-background,#fbf5ef)}
 .topbar{align-items:center}
 .top-actions{display:flex;align-items:center;gap:6px}
 .brand{font-family:var(--font-arabic),serif;font-size:27px;font-weight:800;letter-spacing:.02em;color:var(--brown)}
@@ -165,6 +166,11 @@ body[data-season="spring"]{--rose:#d98da0;--pink:#d98da0;--paper:#fffdf8}
 body[data-season="summer"]{--rose:#df9d62;--pink:#e7ad73;--paper:#fffdf5}
 body[data-season="autumn"]{--rose:#bd7c64;--pink:#c99172;--paper:#fffaf4}
 body[data-season="winter"]{--rose:#9b9fbe;--pink:#b5aac9;--paper:#fcfbfa}
+body[data-season="spring"]{--ambience-background:radial-gradient(ellipse at 8% 10%,rgba(239,196,202,.38),transparent 34%),linear-gradient(180deg,#fcf0ec,#fffaf4 48%,#f7f7ed)}
+body[data-season="summer"]{--ambience-background:radial-gradient(ellipse at 92% 8%,rgba(242,202,137,.34),transparent 31%),linear-gradient(180deg,#fff4de,#fffaf2 48%,#f3f4e9)}
+body[data-season="autumn"]{--ambience-background:radial-gradient(ellipse at 4% 13%,rgba(215,158,112,.24),transparent 30%),radial-gradient(ellipse at 96% 42%,rgba(197,139,113,.18),transparent 34%),linear-gradient(180deg,#f8eee3 0%,#fff8ef 42%,#f7eee6 100%)}
+body[data-season="winter"]{--ambience-background:radial-gradient(ellipse at 90% 12%,rgba(191,195,218,.28),transparent 31%),linear-gradient(180deg,#f2f1f7,#fbfaf7 50%,#f1f0ec)}
+body[data-special-event="halloween"]{--ambience-background:radial-gradient(ellipse at 92% 11%,rgba(204,151,111,.23),transparent 30%),radial-gradient(ellipse at 6% 40%,rgba(159,133,153,.13),transparent 34%),linear-gradient(180deg,#f6ede5 0%,#fff8ef 52%,#f5ebe6 100%)}
 body[data-season="summer"] .hero{background:linear-gradient(145deg,#fffaf0,#fff0d9)}
 body[data-season="autumn"] .hero{background:linear-gradient(145deg,#fffaf3,#f5e5dc)}
 body[data-season="winter"] .hero{background:linear-gradient(145deg,#fbfbff,#eeeef7)}
@@ -172,5 +178,22 @@ body[data-season="summer"] .cakes-panel{background:linear-gradient(135deg,#fffaf
 body[data-season="autumn"] .cakes-panel{background:linear-gradient(135deg,#fff9f1,#f8e8df)}
 body[data-season="winter"] .cakes-panel{background:linear-gradient(135deg,#fbfbff,#f0eef8)}
 @media(max-width:600px){.converter-grid{grid-template-columns:1fr 1fr}.converter-grid label:first-child{grid-column:1/-1}.brand{font-size:24px}}
+
+/* Ambiance saisonnière : illustrations SVG en arrière-plan, sans bloquer les gestes. */
+.season-symbol-bank{position:absolute;width:0;height:0;overflow:hidden}
+.seasonal-decor{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.season-art{position:absolute;width:clamp(34px,6vw,72px);height:auto;opacity:.18;pointer-events:none;filter:drop-shadow(0 5px 10px rgba(93,63,53,.11));animation:season-art-in .72s cubic-bezier(.2,.75,.25,1) both}
+.season-art--top-left{top:126px;left:max(8px,calc(50% - 520px));transform:rotate(-18deg)}
+.season-art--top-right{top:124px;right:max(8px,calc(50% - 520px));transform:rotate(12deg)}
+.season-art--left-bottom{top:62vh;left:max(8px,calc(50% - 540px));transform:rotate(-10deg)}
+.season-art--right-bottom{top:68vh;right:max(8px,calc(50% - 540px));transform:rotate(15deg)}
+.season-art--middle-left{top:42vh;left:max(12px,calc(50% - 500px));transform:rotate(8deg)}
+.season-art--middle-right{top:49vh;right:max(12px,calc(50% - 500px));transform:rotate(-12deg)}
+.season-art--upper-middle{top:170px;left:calc(50% + 350px);transform:rotate(8deg)}
+.season-art--leaf{color:#c78354}.season-art--pumpkin{color:#d58a58}.season-art--mushroom{color:#bd8290}.season-art--chestnut{color:#956447}.season-art--candle{color:#dfbd94}.season-art--ghost{color:#fffaf2;opacity:.76;filter:drop-shadow(0 4px 8px rgba(96,74,92,.18))}.season-art--bat{color:#776678;opacity:.24}.season-art--moon{color:#e2bd73;opacity:.42}.season-art--sparkle{color:#d9af62;opacity:.42}.season-art--flower{color:#d98da0}
+.season-art--item-2{animation-delay:.08s}.season-art--item-3{animation-delay:.14s}.season-art--item-4{animation-delay:.2s}.season-art--item-5{animation-delay:.26s}.season-art--item-6{animation-delay:.32s}.season-art--item-7{animation-delay:.38s}.season-art--item-8{animation-delay:.44s}.season-art--item-9{animation-delay:.5s}.season-art--item-10{animation-delay:.56s}.season-art--item-11{animation-delay:.62s}.season-art--item-12{animation-delay:.68s}.season-art--item-13{animation-delay:.74s}
+@keyframes season-art-in{from{opacity:0;translate:0 -7px}to{translate:0 0}}
+@media(max-width:650px){.season-art{width:clamp(30px,9vw,48px);opacity:.12}.season-art--top-left{top:116px;left:2px}.season-art--top-right{top:116px;right:2px}.season-art--left-bottom{top:70vh;left:0}.season-art--right-bottom{top:76vh;right:0}.season-art--middle-left{top:48vh;left:0}.season-art--middle-right{top:54vh;right:0}.season-art--upper-middle{display:none}.season-art--ghost{opacity:.56}}
+@media(prefers-reduced-motion:reduce){.season-art{animation:none}}
 /* VDEF final boot safety */
 .splash{transition:opacity .28s ease,visibility .28s ease}

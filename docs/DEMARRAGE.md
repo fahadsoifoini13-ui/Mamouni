@@ -1,29 +1,21 @@
-# Guide de démarrage pour l’utilisateur
+# Guide de reprise
 
-## Ce que cette copie protège
+## Pour comprendre le projet
 
-Le dossier `Mamouni-Codex` est une copie de travail. L’archive originale est gardée dans `recovery/`, et le code décompressé est suivi dans Git local. La sauvegarde des vraies données est présente dans `data-reference/` mais exclue de Git.
+Ouvrir le dossier `Mamouni-Codex` comme projet dans Codex. Commencer par `AGENTS.md`, puis consulter les rapports d’audit dans `docs/`. Le rapport initial décrit l’état observé à cette date ; vérifier le code courant avant de s’appuyer sur ses constats.
 
-Cette copie ne change pas l’application installée sur l’iPhone. Elle ne prouve pas à elle seule que la version en ligne correspond exactement à l’archive fournie.
+## Données de l’iPhone
 
-## Première séance Codex
+La copie locale et l’application de production ont des bases séparées. Ne jamais demander à l’utilisatrice d’effacer le site, son historique ou les données du navigateur. Avant une évolution importante, lui faire exporter la sauvegarde depuis l’application installée et conserver le fichier intact dans Fichiers. Ne pas utiliser le JSON de référence comme un fichier de test ou l’ajouter au dépôt.
 
-1. Dans Codex, ouvrir le dossier `Mamouni-Codex` comme projet.
-2. Vérifier que Codex a lu `AGENTS.md`.
-3. Coller le texte de `PROMPT-AUDIT-CODEX.md`.
-4. Lire le rapport avant de demander une correction. Pour chaque point, demander une explication simple et son risque pour les données.
-5. Garder les changements futurs sur une version de test. L’iPhone de ta femme reste sur la version actuelle jusqu’à une validation explicite.
+## Dépôt et publication
 
-## Routine de sauvegarde à adopter
+Le dépôt GitHub est `fahadsoifoini13-ui/Mamouni`. La branche `main` est reliée à Netlify, qui publie `app/` automatiquement après chaque push. Vérifier le dépôt, les tests et le diff avant tout push vers `main` : ce push déclenche une nouvelle version du site utilisé par l’iPhone.
 
-Avant une grosse évolution ou un changement de version, exporter depuis l’application installée sur l’iPhone et enregistrer le fichier dans Fichiers, puis en garder une copie datée ailleurs. Pour le moment, conserver le fichier actuel comme référence intacte. Ne pas le remplacer par un export d’essai.
+## Tests locaux
 
-Avant de restaurer : vérifier le nom et la date du fichier, son nombre de recettes et d’articles de stock, puis exporter l’état actuel du téléphone. Une restauration remplace les données locales de l’application.
+Les tests automatisés se lancent avec `node --test tests/*.test.cjs`. L’aperçu local peut être servi depuis le dossier `app/`; utiliser uniquement des données synthétiques dans ce navigateur de test. Un résultat local ne prouve pas que l’iPhone ou Netlify a reçu la nouvelle version.
 
-## GitHub
+## Architecture future
 
-Le dépôt local est prêt à garder l’historique du code. Aucun compte ni dépôt GitHub n’a été relié. Avant de le publier, vérifier que `data-reference/*.json` et `recovery/*` restent exclus, puis créer un dépôt privé. Ne pas coller de mot de passe ou de clé secrète dans Codex.
-
-## Plus tard : Supabase
-
-Avant toute migration, il faudra définir les comptes et l’accès (pour l’instant une utilisatrice principale), traduire les recettes et unités réelles en modèle de données, prévoir l’import idempotent, sauvegarde/restauration et retour arrière, puis faire un prototype séparé. La migration ne commence qu’après validation de ces éléments et un essai avec une copie des données.
+Supabase n’est pas configuré et aucune migration n’est en cours. Avant de le préparer, établir avec l’utilisatrice les besoins de synchronisation, les comptes, la sauvegarde et la procédure de retour arrière. Toute première expérimentation doit utiliser un environnement distinct et une copie synthétique des données.

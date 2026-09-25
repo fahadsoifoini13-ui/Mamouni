@@ -7,10 +7,25 @@
   <meta name="description" content="مَطْبَخ — recettes, stock, menus et liste de courses.">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-  <link rel="stylesheet" href="styles.css?v=vdef-final-4">
+  <link rel="stylesheet" href="styles.css?v=v5-storage-themes">
   <title>مَطْبَخ — Carnet de cuisine</title>
 </head>
 <body>
+  <div id="seasonalDecor" class="seasonal-decor" aria-hidden="true"></div>
+  <svg class="season-symbol-bank" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <symbol id="season-leaf" viewBox="0 0 100 100"><path d="M82 12C45 13 17 27 15 57c-2 22 18 34 37 25 24-11 31-41 30-70Z" fill="currentColor"/><path d="M18 83c15-22 30-38 53-58M38 64l-2-19m17 5 16-4" fill="none" stroke="#fff9ef" stroke-width="4" stroke-linecap="round" opacity=".8"/></symbol>
+    <symbol id="season-pumpkin" viewBox="0 0 100 100"><path d="M49 27c-22-12-41 5-40 32 1 24 16 34 40 24 24 10 39 0 40-24 1-27-18-44-40-32Z" fill="currentColor"/><path d="M49 29c-9 12-10 42 0 54m0-54c10 12 9 42 0 54m0-54c-2-9 2-15 10-18" fill="none" stroke="#fff5e7" stroke-width="4" stroke-linecap="round" opacity=".82"/><path d="M50 28c3-10 11-12 18-9-3 7-9 10-18 9Z" fill="#84956f"/></symbol>
+    <symbol id="season-mushroom" viewBox="0 0 100 100"><path d="M16 49c2-20 17-34 35-34s33 14 35 34H16Z" fill="currentColor"/><path d="M38 49h27l7 37H31l7-37Z" fill="#fff1df"/><circle cx="39" cy="34" r="4" fill="#fff1df"/><circle cx="57" cy="26" r="3" fill="#fff1df"/><circle cx="68" cy="39" r="3" fill="#fff1df"/></symbol>
+    <symbol id="season-chestnut" viewBox="0 0 100 100"><path d="M50 18c22 0 37 17 34 39-3 22-19 34-34 34S19 79 16 57c-3-22 12-39 34-39Z" fill="currentColor"/><path d="M50 20c-2 19-1 48 0 69" fill="none" stroke="#fff1df" stroke-width="4" opacity=".75"/><path d="M44 17c1-8 5-12 11-13" fill="none" stroke="#778b65" stroke-width="6" stroke-linecap="round"/></symbol>
+    <symbol id="season-candle" viewBox="0 0 100 100"><rect x="32" y="39" width="36" height="48" rx="8" fill="currentColor"/><path d="M50 31c-12-11 1-18 1-27 10 9 13 17 1 27Z" fill="#efb860"/><path d="M42 51v25" stroke="#fff5e8" stroke-width="4" stroke-linecap="round" opacity=".75"/></symbol>
+    <symbol id="season-ghost" viewBox="0 0 100 100"><path d="M20 84V47c0-20 13-34 30-34s30 14 30 34v37l-12-8-10 8-10-8-10 8-9-8-9 8Z" fill="currentColor"/><ellipse cx="40" cy="48" rx="4" ry="6" fill="#705e66"/><ellipse cx="61" cy="48" rx="4" ry="6" fill="#705e66"/><path d="M44 62q6 7 12 0" fill="none" stroke="#705e66" stroke-width="3" stroke-linecap="round"/></symbol>
+    <symbol id="season-bat" viewBox="0 0 100 100"><path d="M50 39c-8-20-17-21-31-23l6 23L8 30l6 31 20-8c3 15 9 23 16 25 7-2 13-10 16-25l20 8 6-31-17 9 6-23c-14 2-23 3-31 23Z" fill="currentColor"/><circle cx="44" cy="51" r="2.5" fill="#fff4df"/><circle cx="56" cy="51" r="2.5" fill="#fff4df"/></symbol>
+    <symbol id="season-moon" viewBox="0 0 100 100"><path d="M73 16C42 19 28 54 44 77c9 13 25 16 40 8-8 11-20 17-34 14C24 96 8 75 12 50 16 24 42 8 66 12c3 1 5 2 7 4Z" fill="currentColor"/></symbol>
+    <symbol id="season-sparkle" viewBox="0 0 100 100"><path d="M50 7 59 40 92 50 59 60 50 93 41 60 8 50 41 40Z" fill="currentColor"/><circle cx="81" cy="19" r="5" fill="currentColor"/><circle cx="19" cy="79" r="4" fill="currentColor"/></symbol>
+    <symbol id="season-flower" viewBox="0 0 100 100"><g fill="currentColor"><ellipse cx="50" cy="23" rx="13" ry="20"/><ellipse cx="50" cy="77" rx="13" ry="20"/><ellipse cx="23" cy="50" rx="20" ry="13"/><ellipse cx="77" cy="50" rx="20" ry="13"/><ellipse cx="31" cy="31" rx="13" ry="19" transform="rotate(-45 31 31)"/><ellipse cx="69" cy="69" rx="13" ry="19" transform="rotate(-45 69 69)"/><ellipse cx="69" cy="31" rx="13" ry="19" transform="rotate(45 69 31)"/><ellipse cx="31" cy="69" rx="13" ry="19" transform="rotate(45 31 69)"/></g><circle cx="50" cy="50" r="13" fill="#f4c66d"/></symbol>
+    <symbol id="season-sun" viewBox="0 0 100 100"><circle cx="50" cy="50" r="22" fill="currentColor"/><g stroke="currentColor" stroke-width="7" stroke-linecap="round"><path d="M50 8v13m0 58v13M8 50h13m58 0h13M20 20l9 9m42 42 9 9m0-60-9 9m-42 42-9 9"/></g></symbol>
+    <symbol id="season-snowflake" viewBox="0 0 100 100"><g stroke="currentColor" stroke-width="6" stroke-linecap="round"><path d="M50 8v84M14 29l72 42M14 71l72-42M50 8l-9 11m9-11 9 11M50 92l-9-11m9 11 9-11M14 29l14 1m-14-1 5 13m67 29-14-1m14 1-5-13M14 71l5-13m-5 13 14-1m58-42-5 13m5-13-14 1"/></g></symbol>
+  </svg>
   <!-- Écran d'ouverture léger : affiché avant l'initialisation de l'application. -->
   <div id="splash" class="splash" aria-label="Ouverture de Matbakh">
     <div class="splash-orbit splash-orbit-1"></div>
@@ -78,6 +93,7 @@
     }
   }, 3800);
 </script>
-<script src="app.js?v=vdef-final-4"></script>
+<script src="data-validation.js?v=v5-storage-themes"></script>
+<script src="app.js?v=v5-storage-themes"></script>
 </body>
 </html>

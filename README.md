@@ -1,26 +1,26 @@
-# Mamouni — espace de reprise Codex
+# Mamouni
 
-Cet espace réunit la version fournie de l’application, la sauvegarde réelle des données et les consignes de travail pour poursuivre le projet sans modifier la version utilisée sur l’iPhone.
+Mamouni est une application web personnelle de recettes, stock, repas, courses et gâteaux. Elle fonctionne comme une PWA et conserve ses données dans IndexedDB sur chaque appareil.
 
-## Ce qui est inclus
+## Organisation
 
-- `app/` : copie décompressée de l’archive `Matbakh-VDEF-final-4-stable.zip` (12 fichiers).
-- `recovery/` : archive originale, conservée comme copie de secours.
-- `data-reference/` : sauvegarde JSON fournie le 24 septembre 2026. Elle est exclue du suivi Git car elle contient les données personnelles de la maison.
-- `AGENTS.md` : règles permanentes pour tout agent Codex travaillant dans ce dossier.
-- `docs/` : inventaire, premiers constats et guide de démarrage.
+- `app/` contient l’application publiée par Netlify.
+- `tests/` contient les vérifications automatisées de validation JSON et de protection du stockage.
+- `docs/` contient les audits et les consignes de reprise.
+- `data-reference/` contient une sauvegarde privée de référence, exclue de Git.
+- `recovery/` contient l’archive d’origine, exclue de Git.
 
-L’archive se nomme **Matbakh**, tandis que son titre d’application est « Matbakh » et sa base locale s’appelle `mamouni-v1`. Ce dossier est appelé Mamouni pour suivre le nom du projet dans la conversation.
+Le dépôt GitHub `fahadsoifoini13-ui/Mamouni` utilise `main` pour la production. Netlify est relié à cette branche, publie le dossier `app/` et lance automatiquement un déploiement après un push. Un push vers `main` modifie donc le site de production.
 
-## Démarrer dans Codex
+## Contrôles locaux
 
-1. Ouvrir ce dossier `Mamouni-Codex` comme projet local dans Codex.
-2. Donner le prompt d’audit de `docs/PROMPT-AUDIT-CODEX.md`.
-3. Lire le rapport produit et poser les questions à Codex avant toute modification.
-4. Ne publier aucune nouvelle version avant d’avoir validé les sauvegardes, le plan et l’essai sur une adresse de test. L’iPhone de référence reste la version de production actuelle.
+Avec Node.js installé, depuis la racine du dépôt :
 
-Le dépôt Git local conserve le code et les documents. Aucun dépôt GitHub n’est configuré. Avant de publier ce dépôt en ligne, vérifier les fichiers suivis et garder la sauvegarde JSON privée.
+```sh
+node --check app/app.js
+node --check app/data-validation.js
+node --check app/sw.js
+node --test tests/*.test.cjs
+```
 
-## Étape suivante recommandée
-
-Faire l’audit statique en lecture seule, puis valider ensemble un plan de stabilisation. L’import réel et la migration vers Supabase attendent une procédure de sauvegarde, de restauration et de validation approuvée. Supabase n’est pas configuré ici.
+Les données de référence ne doivent jamais être ajoutées à Git ni importées automatiquement dans l’application. Pour les règles de travail et de protection des données, lire [AGENTS.md](AGENTS.md).

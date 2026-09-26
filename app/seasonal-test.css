@@ -1,100 +1,13 @@
-/* Matbakh seasonal test V7 — restored responsive layout + cinematic scene */
-:root{--st-shadow:0 18px 48px rgba(55,32,28,.16);--st-ink:#4d3b36;--st-paper:rgba(255,250,244,.90);--st-line:rgba(111,77,65,.16);--st-accent:#d94d69}
-
-/* The seasonal test is a complete visual layer. Keep the original app underneath untouched. */
-#seasonalTestHome{position:relative;z-index:5;display:flex;flex-direction:column;width:100%;min-height:calc(100vh - 76px);min-height:calc(100dvh - 76px);overflow:hidden;color:var(--st-ink);background-color:#d9a786;background-image:url("./assets/autumn-ambience.svg");background-repeat:no-repeat;background-position:center top;background-size:auto 100%;isolation:isolate}
-#seasonalTestHome:before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,rgba(88,47,39,.12),transparent 25%,transparent 75%,rgba(88,47,39,.12));pointer-events:none}
-#seasonalTestHome:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(255,248,238,.05),rgba(255,245,232,0) 44%,rgba(40,22,21,.12) 100%);pointer-events:none}
-body.seasonal-test-halloween #seasonalTestHome{background-color:#24152d;background-image:url("./assets/halloween-ambience.svg")}
-body.seasonal-test-halloween #seasonalTestHome:before{background:linear-gradient(90deg,rgba(16,7,23,.22),transparent 26%,transparent 74%,rgba(16,7,23,.22))}
-body.seasonal-test-halloween #seasonalTestHome:after{background:linear-gradient(180deg,rgba(17,8,25,.03),rgba(20,8,24,0) 44%,rgba(8,4,12,.24) 100%)}
-
-/* Desktop: the SVG remains portrait so the side branches/leaves are visible instead of being cropped by cover. */
-@media(min-width:900px){#seasonalTestHome{background-size:auto 100%}}
-@media(max-width:899px){#seasonalTestHome{background-size:auto 100%;background-position:center top}}
-@media(max-width:650px){#seasonalTestHome{min-height:calc(100dvh - 76px);background-size:auto 100%}}
-
-.st-header,.st-main,.st-bottom-nav{position:relative;z-index:2;width:min(100%,760px);margin-inline:auto}
-.st-header{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:22px 22px 14px}
-.st-brand-wrap{filter:drop-shadow(0 3px 14px rgba(255,247,235,.55))}
-.st-brand{font-family:"Brush Script MT","Segoe Script",cursive;font-size:37px;line-height:1;color:#c83d60;letter-spacing:.2px}
-.st-brand span{color:#ee6b83}
-.st-subtitle{margin-top:5px;font-size:13px;color:#725b54}
-.st-header-actions{display:flex;gap:10px;flex:none}
-.st-icon{width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.72);background:rgba(255,252,247,.72);color:#69534c;font-size:20px;display:grid;place-items:center;box-shadow:0 8px 22px rgba(55,32,28,.10);backdrop-filter:blur(8px)}
-body.seasonal-test-halloween .st-brand{color:#f56b80}
-body.seasonal-test-halloween .st-subtitle{color:#ead9d1}
-body.seasonal-test-halloween .st-icon{background:rgba(38,23,45,.58);color:#f8e5dc;border-color:rgba(255,231,216,.35)}
-
-.st-main{display:flex;flex-direction:column;gap:16px;padding:6px 18px 102px}
-/* Desired order: greeting/brand → today's two meals + CTA → four shortcuts. */
-.st-hero{order:1;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.52);border-radius:28px;padding:25px 25px 27px;background:rgba(255,249,241,.78);box-shadow:var(--st-shadow);backdrop-filter:blur(8px)}
-.st-hero-top{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:11px;letter-spacing:2px;font-weight:800;color:#71574d}
-.st-hero-top b{padding:9px 14px;border-radius:999px;background:rgba(255,255,255,.58);letter-spacing:.5px;font-size:12px}
-.st-hero-brand{margin-top:20px;font-family:"Brush Script MT","Segoe Script",cursive;font-size:29px;color:#ca3e61;line-height:1}
-.st-hero h1{margin:5px 0 3px;font-family:Georgia,"Times New Roman",serif;font-size:47px;line-height:1.05;color:#493832;letter-spacing:-1px}
-.st-hero p{margin:0;font-size:16px;color:#80675e}
-body.seasonal-test-halloween .st-hero{background:rgba(29,17,37,.66);border-color:rgba(255,229,212,.25);box-shadow:0 22px 58px rgba(8,3,12,.34)}
-body.seasonal-test-halloween .st-hero-top,body.seasonal-test-halloween .st-hero p{color:#e8d4ca}
-body.seasonal-test-halloween .st-hero-top b{background:rgba(255,242,230,.13);color:#f8dfd0}
-body.seasonal-test-halloween .st-hero-brand,body.seasonal-test-halloween .st-hero h1{color:#fff1e8}
-
-.st-today{order:2;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.56);border-radius:27px;padding:20px;background:rgba(255,251,246,.90);box-shadow:var(--st-shadow);backdrop-filter:blur(10px)}
-.st-today-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:13px}
-.st-today-head h2{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:30px;color:#4f3c35}
-.st-today-head span{font-size:13px;color:#8d746a;white-space:nowrap}
-.st-meals{display:grid;gap:9px}
-.st-meal{width:100%;display:grid;grid-template-columns:45px 1fr 20px;align-items:center;gap:10px;border:1px solid rgba(110,78,65,.13);border-radius:16px;padding:11px 12px;background:rgba(255,248,241,.76);text-align:left;color:#4f3c35}
-.st-meal-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:#f3dfd4;font-size:23px;overflow:hidden}
-.st-meal-copy{display:grid;gap:2px;min-width:0}
-.st-meal-copy strong{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.st-meal-copy small{font-size:11px;color:#8d746a}
-.st-chevron{font-size:25px;color:#a28478}
-.st-empty{padding:20px 8px;text-align:center;color:#8d746a}
-.st-program{width:100%;margin-top:13px;border:0;border-radius:14px;padding:13px 16px;background:#f15a6d;color:white;font-weight:800;box-shadow:0 8px 18px rgba(216,72,94,.18)}
-body.seasonal-test-halloween .st-today{background:rgba(31,20,38,.82);border-color:rgba(255,231,216,.22);color:#f9ebe2}
-body.seasonal-test-halloween .st-today-head h2{color:#fff0e6}
-body.seasonal-test-halloween .st-today-head span,.seasonal-test-halloween .st-meal-copy small{color:#d8c2b8}
-body.seasonal-test-halloween .st-meal{background:rgba(255,245,235,.08);border-color:rgba(255,231,216,.15);color:#fff0e6}
-body.seasonal-test-halloween .st-meal-icon{background:rgba(245,184,142,.13)}
-
-.st-shortcuts{order:3;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.st-shortcuts button{min-height:86px;border:1px solid rgba(255,255,255,.56);border-radius:19px;background:rgba(255,252,248,.90);color:#51413b;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;box-shadow:0 10px 26px rgba(55,32,28,.12);backdrop-filter:blur(8px)}
-.st-shortcut-icon{font-size:25px;line-height:1;color:#df4f6c}
-.st-shortcuts strong{font-size:14px}
-body.seasonal-test-halloween .st-shortcuts button{background:rgba(35,23,42,.82);border-color:rgba(255,231,216,.22);color:#f9e9df}
-body.seasonal-test-halloween .st-shortcut-icon{color:#ff7181}
-
-.st-bottom-nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);z-index:30;display:flex;justify-content:center;gap:3px;height:76px;padding:7px max(10px,env(safe-area-inset-left)) calc(7px + env(safe-area-inset-bottom));background:rgba(255,250,245,.95);border-top:1px solid rgba(224,205,194,.7);backdrop-filter:blur(16px)}
-.st-bottom-nav button{flex:1;max-width:150px;border:0;border-radius:15px;background:transparent;color:#8e7970;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}
-.st-bottom-nav button span{font-size:22px;line-height:1}.st-bottom-nav button small{font-size:10px}.st-bottom-nav button.active{background:#f9e2e5;color:#c84262;font-weight:800}
-body.seasonal-test-halloween .st-bottom-nav{background:rgba(25,16,31,.94);border-color:rgba(255,231,216,.14)}
-body.seasonal-test-halloween .st-bottom-nav button{color:#cbb8b0}
-body.seasonal-test-halloween .st-bottom-nav button.active{background:rgba(245,96,117,.16);color:#ff7384}
-
-/* Splash: restrained cinematic opening, with the scene visible rather than enlarged. */
-#seasonalTestSplash{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;overflow:hidden;background:#ead3bd url("./assets/autumn-ambience.svg") center/auto 100% no-repeat;animation:stSplashIn .35s ease-out both}
-#seasonalTestSplash:before{content:"";position:absolute;inset:0;background:rgba(255,247,236,.10)}
-.seasonal-test-halloween #seasonalTestSplash{background-color:#211528;background-image:url("./assets/halloween-ambience.svg")}
-.seasonal-test-halloween #seasonalTestSplash:before{background:rgba(12,6,17,.18)}
-.st-splash-card{position:relative;z-index:1;width:min(82vw,370px);min-height:390px;padding:42px 28px 34px;border:1px solid rgba(255,255,255,.55);border-radius:30px;background:rgba(255,249,241,.25);box-shadow:0 30px 90px rgba(40,20,18,.22);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;backdrop-filter:blur(3px)}
-.seasonal-test-halloween .st-splash-card{background:rgba(25,15,32,.25);border-color:rgba(255,232,211,.28);box-shadow:0 30px 90px rgba(8,3,12,.40)}
-.st-chef{width:50px;height:50px;border-radius:50%;margin-bottom:20px;border:1px solid rgba(255,255,255,.75);background:rgba(255,250,242,.48);box-shadow:0 8px 22px rgba(60,35,27,.12);display:grid;place-items:center}
-.st-chef:after{content:"♥";font-size:23px;color:#d83f61}.seasonal-test-halloween .st-chef{background:rgba(38,24,45,.55);border-color:rgba(255,234,220,.35)}.seasonal-test-halloween .st-chef:after{color:#ff7180}
-.st-splash-title{font-family:"Brush Script MT","Segoe Script",cursive;font-size:51px;color:#c83d60;text-shadow:0 4px 22px rgba(255,248,238,.34);line-height:1}
-.st-splash-title span{color:#ed6a82}.seasonal-test-halloween .st-splash-title{color:#fff0e6;text-shadow:0 4px 22px rgba(8,4,12,.55)}
-.st-splash-card p{font-size:14px;line-height:1.5;margin:24px 0 0;color:#72564e}.seasonal-test-halloween .st-splash-card p{color:#e9d4c9}
-.st-progress{width:130px;height:5px;border-radius:99px;background:rgba(255,255,255,.48);overflow:hidden;margin-top:22px}.st-progress i{display:block;width:42%;height:100%;border-radius:inherit;background:#ef5a73;animation:stProgress 1.45s ease-in-out both}
-.st-splash.is-done{animation:stSplashOut .4s ease-in forwards}
-@keyframes stSplashIn{from{opacity:0}to{opacity:1}}@keyframes stSplashOut{from{opacity:1}to{opacity:0;visibility:hidden}}@keyframes stProgress{from{transform:translateX(-120%)}to{transform:translateX(250%)}}
-
-@media(max-width:600px){
- .st-header{padding:17px 16px 11px}.st-brand{font-size:32px}.st-subtitle{font-size:12px}.st-header-actions{gap:7px}.st-icon{width:43px;height:43px}
- .st-main{padding:4px 14px 98px;gap:12px}.st-hero{padding:20px 18px 22px;border-radius:23px}.st-hero-top{font-size:9px;letter-spacing:1.5px}.st-hero-top b{padding:8px 11px;font-size:11px}.st-hero-brand{margin-top:17px;font-size:26px}.st-hero h1{font-size:39px}.st-hero p{font-size:14px}
- .st-today{padding:16px;border-radius:23px}.st-today-head h2{font-size:27px}.st-today-head span{font-size:12px}.st-shortcuts{gap:9px}.st-shortcuts button{min-height:78px;border-radius:17px}.st-shortcuts strong{font-size:13px}.st-bottom-nav{height:74px}.st-bottom-nav button small{font-size:9px}
- #seasonalTestSplash{background-size:auto 100%}.st-splash-card{width:min(86vw,350px);min-height:390px}
-}
-
-@media(max-width:380px){.st-header{padding-inline:12px}.st-brand{font-size:29px}.st-subtitle{font-size:11px}.st-icon{width:39px;height:39px;font-size:17px}.st-main{padding-inline:10px}.st-hero h1{font-size:35px}.st-shortcuts button{min-height:72px}}
-
-@media(prefers-reduced-motion:reduce){.st-progress i,#seasonalTestSplash,.st-splash.is-done{animation:none}.st-splash.is-done{opacity:0;visibility:hidden}}
+/* Matbakh seasonal visual test v8 — full-screen cinematic home */
+:root{--st-ink:#4b3730;--st-paper:rgba(255,248,240,.90);--st-shadow:0 20px 55px rgba(38,20,17,.18);--st-accent:#f25270}
+body.seasonal-test-active{overflow:hidden}
+#seasonalTestHome{position:fixed;inset:0;z-index:900;display:flex;flex-direction:column;overflow:hidden;color:var(--st-ink);background:#d49b76 url('./assets/autumn-ambience.svg') center center/cover no-repeat;isolation:isolate}
+#seasonalTestHome:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(255,243,226,.03) 0%,rgba(255,228,196,.02) 42%,rgba(45,22,20,.18) 100%);pointer-events:none}
+body.seasonal-test-halloween #seasonalTestHome{background-color:#25162f;background-image:url('./assets/halloween-ambience.svg')}
+body.seasonal-test-halloween #seasonalTestHome:before{background:linear-gradient(180deg,rgba(8,4,15,.05),rgba(15,5,24,.08) 45%,rgba(5,2,10,.38))}
+.st-header,.st-main{position:relative;z-index:2;width:min(100%,760px);margin-inline:auto}.st-header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:18px 18px 8px;flex:none}.st-brand-wrap{filter:drop-shadow(0 3px 16px rgba(0,0,0,.10))}.st-brand{font-family:"Brush Script MT","Segoe Script",cursive;font-size:34px;line-height:1;color:#cf3f62}.st-brand span{color:#ef6b82}.st-subtitle{margin-top:5px;font-size:12px;color:#70584f}.st-header-actions{display:flex;gap:8px}.st-icon{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.65);background:rgba(255,250,244,.72);color:#6a5149;font-size:20px;display:grid;place-items:center;box-shadow:0 8px 22px rgba(35,20,16,.12);backdrop-filter:blur(8px)}body.seasonal-test-halloween .st-brand{color:#ff7184}body.seasonal-test-halloween .st-subtitle{color:#ead9d1}body.seasonal-test-halloween .st-icon{background:rgba(31,17,40,.58);color:#f8e5dc;border-color:rgba(255,231,216,.35)}
+.st-main{display:flex;flex-direction:column;gap:13px;padding:8px 15px 94px;overflow:auto;min-height:0;scrollbar-width:none}.st-main::-webkit-scrollbar{display:none}.st-today{position:relative;border:1px solid rgba(255,255,255,.65);border-radius:27px;padding:17px;background:rgba(255,249,242,.88);box-shadow:var(--st-shadow);backdrop-filter:blur(9px)}.st-today-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:0 3px 8px}.st-today-head h2{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:29px;color:#4f3b34}.st-today-head span{font-size:12px;color:#8b7369;white-space:nowrap}.st-meals{display:grid;gap:7px}.st-meal{width:100%;display:grid;grid-template-columns:48px 1fr 16px;align-items:center;gap:9px;border:0;border-bottom:1px solid rgba(105,74,63,.12);padding:8px 2px;background:transparent;text-align:left;color:#4f3b34}.st-meal:last-child{border-bottom:0}.st-meal-icon{width:44px;height:44px;display:grid;place-items:center;border-radius:50%;background:#f1ded2;overflow:hidden;box-shadow:0 3px 12px rgba(80,45,35,.10)}.st-meal-icon img{width:100%;height:100%;object-fit:cover}.st-meal-copy{display:grid;gap:2px;min-width:0}.st-meal-copy strong{font-size:13px}.st-meal-copy small{font-size:12px;color:#7e665d;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.st-chevron{font-size:24px;color:#a08073}.st-empty{padding:24px 6px;text-align:center;color:#8d746a}.st-program{width:100%;margin-top:9px;border:0;border-radius:13px;padding:12px 15px;background:#f25270;color:white;font-weight:800;box-shadow:0 8px 18px rgba(216,72,94,.20)}body.seasonal-test-halloween .st-today{background:rgba(30,18,38,.84);border-color:rgba(255,231,216,.22);color:#f9ebe2}body.seasonal-test-halloween .st-today-head h2{color:#fff0e6}body.seasonal-test-halloween .st-today-head span,body.seasonal-test-halloween .st-meal-copy small{color:#d8c2b8}body.seasonal-test-halloween .st-meal{border-color:rgba(255,231,216,.14);color:#fff0e6}body.seasonal-test-halloween .st-meal-icon{background:rgba(245,184,142,.13)}
+.st-shortcuts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.st-shortcuts button{min-height:76px;border:1px solid rgba(255,255,255,.60);border-radius:17px;background:rgba(255,252,248,.91);color:#51413b;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;box-shadow:0 10px 25px rgba(55,32,28,.12);backdrop-filter:blur(7px)}.st-shortcut-icon{font-size:24px;line-height:1;color:#df4f6c}.st-shortcuts strong{font-size:12px}body.seasonal-test-halloween .st-shortcuts button{background:rgba(35,23,42,.84);border-color:rgba(255,231,216,.22);color:#f9e9df}body.seasonal-test-halloween .st-shortcut-icon{color:#ff7181}
+.st-bottom-nav{position:absolute;left:0;right:0;bottom:0;z-index:10;display:flex;justify-content:center;gap:2px;height:74px;padding:6px 8px calc(6px + env(safe-area-inset-bottom));background:rgba(255,250,245,.94);border-top:1px solid rgba(224,205,194,.72);backdrop-filter:blur(15px)}.st-bottom-nav button{flex:1;max-width:150px;border:0;border-radius:15px;background:transparent;color:#8e7970;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}.st-bottom-nav button span{font-size:21px;line-height:1}.st-bottom-nav button small{font-size:9px}.st-bottom-nav button.active{background:#f9e2e5;color:#c84262;font-weight:800}body.seasonal-test-halloween .st-bottom-nav{background:rgba(25,16,31,.94);border-color:rgba(255,231,216,.14)}body.seasonal-test-halloween .st-bottom-nav button{color:#cbb8b0}body.seasonal-test-halloween .st-bottom-nav button.active{background:rgba(245,96,117,.16);color:#ff7384}
+#seasonalTestSplash{position:fixed;inset:0;z-index:1200;display:grid;place-items:center;overflow:hidden;background:#d49b76 url('./assets/autumn-ambience.svg') center/cover no-repeat;animation:stSplashIn .3s ease-out both}#seasonalTestSplash:before{content:"";position:absolute;inset:0;background:rgba(255,245,232,.08)}.seasonal-test-halloween #seasonalTestSplash{background-color:#25162f;background-image:url('./assets/halloween-ambience.svg')}.seasonal-test-halloween #seasonalTestSplash:before{background:rgba(8,4,15,.20)}.st-splash-center{position:relative;z-index:1;text-align:center;color:#fff9f1;text-shadow:0 3px 25px rgba(25,10,8,.30)}.st-chef{font-size:30px;color:#f15a73}.st-splash-title{margin-top:7px;font-family:"Brush Script MT","Segoe Script",cursive;font-size:52px;line-height:1}.st-splash-title span{color:#f66c83}.st-splash-center p{margin:17px 0 0;font-size:14px;line-height:1.5}.st-progress{width:125px;height:4px;border-radius:99px;background:rgba(255,255,255,.45);overflow:hidden;margin:20px auto 0}.st-progress i{display:block;width:45%;height:100%;background:#f15a73;animation:stProgress 1.45s ease-in-out both}.st-splash.is-done{animation:stSplashOut .4s ease-in forwards}@keyframes stSplashIn{from{opacity:0}to{opacity:1}}@keyframes stSplashOut{from{opacity:1}to{opacity:0;visibility:hidden}}@keyframes stProgress{from{transform:translateX(-130%)}to{transform:translateX(250%)}}
+@media(min-width:700px){.st-header{padding-top:24px}.st-main{padding-inline:22px}.st-today{padding:20px}.st-shortcuts button{min-height:88px}.st-shortcuts strong{font-size:14px}.st-today-head h2{font-size:32px}}@media(max-width:420px){.st-header{padding:14px 13px 6px}.st-brand{font-size:31px}.st-subtitle{font-size:11px}.st-icon{width:41px;height:41px}.st-main{padding:6px 12px 92px}.st-today{border-radius:24px;padding:14px}.st-today-head h2{font-size:27px}.st-shortcuts{gap:8px}.st-shortcuts button{min-height:73px}.st-shortcuts strong{font-size:12px}}@media(prefers-reduced-motion:reduce){.st-progress i,#seasonalTestSplash{animation:none}.st-splash.is-done{opacity:0;visibility:hidden}}

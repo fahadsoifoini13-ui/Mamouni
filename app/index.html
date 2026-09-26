@@ -45,7 +45,7 @@
     <symbol id="season-cinnamon" viewBox="0 0 100 100"><path d="m26 18 18-5 31 64-18 9Z" fill="currentColor" opacity=".75"/><path d="m49 15 17-6 29 65-17 8Z" fill="currentColor"/><path d="m26 18 18-5m13 73 18-9M49 15l17-6m12 73 17-8" fill="none" stroke="#fff2dc" stroke-width="3" stroke-linecap="round"/><circle cx="35" cy="21" r="3" fill="#fff2dc"/><circle cx="58" cy="17" r="3" fill="#fff2dc"/></symbol>
   </svg>
   <!-- Splash saisonnier, dessiné avec les SVG locaux afin de fonctionner hors ligne. -->
-  <div id="splash" class="splash" role="status" aria-label="Ouverture de Mamouni">
+  <div id="splash" class="splash" role="status" aria-label="Ouverture de Matbakh">
     <div class="splash-scene" aria-hidden="true">
       <svg viewBox="0 0 100 100" class="splash-art splash-art--spring splash-art--branch"><use href="#season-branch"></use></svg>
       <svg viewBox="0 0 100 100" class="splash-art splash-art--spring splash-art--blossom"><use href="#season-blossom"></use></svg>
@@ -68,7 +68,7 @@
     </div>
     <div class="splash-card">
       <div class="splash-mark" aria-hidden="true">♡</div>
-      <div class="splash-title">Mamouni<span>♥</span></div>
+      <div class="splash-title">مَطْبَخ<span>♥</span></div>
       <div class="splash-subtitle">Votre cuisine, au fil des saisons</div>
       <div class="splash-progress" aria-hidden="true"><i></i></div>
     </div>
@@ -77,7 +77,7 @@
   <div id="app">
     <header class="topbar">
       <div>
-        <div class="brand">Mamouni <span>♥</span></div>
+        <div class="brand">مَطْبَخ <span>♥</span></div>
         <div class="subtitle">Carnet de cuisine de la maison</div>
       </div>
       <div class="top-actions"><button class="icon-btn" onclick="showConverter()" title="Convertisseur">↔</button><button class="icon-btn" onclick="showSeasonPicker()" title="Changer la saison">🌿</button><button class="icon-btn" onclick="showDataManager()" title="Sauvegarder ou restaurer">💾</button></div>
@@ -102,8 +102,6 @@
 
   <div id="modalRoot"></div>
   <script>
-  // Filet de sécurité : même si le JavaScript applicatif ne se charge pas,
-  // l'écran d'ouverture ne peut pas rester bloqué indéfiniment.
   window.__matbakhBootStart = performance.now();
   window.__matbakhBootFinished = false;
   window.addEventListener('error', function(event){
@@ -132,5 +130,6 @@
 </script>
 <script src="data-validation.js?v=v6-seasonal-identity-r1"></script>
 <script src="app.js?v=v6-seasonal-identity-r1"></script>
+<script src="seasonal-test.js?v=seasonal-test-r2"></script>
 </body>
 </html>

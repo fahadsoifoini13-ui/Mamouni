@@ -7,12 +7,21 @@
   <meta name="description" content="مَطْبَخ — recettes, stock, menus et liste de courses.">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-  <link rel="stylesheet" href="styles.css?v=v5-storage-themes">
+  <link rel="stylesheet" href="styles.css?v=v6-seasonal-identity-r1">
   <title>مَطْبَخ — Carnet de cuisine</title>
 </head>
 <body>
+  <script>
+    (function(){var month=new Date().getMonth()+1;document.body.dataset.season=month>=3&&month<=5?"spring":month>=6&&month<=8?"summer":month>=9&&month<=11?"autumn":"winter"})();
+  </script>
   <div id="seasonalDecor" class="seasonal-decor" aria-hidden="true"></div>
   <svg class="season-symbol-bank" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <symbol id="icon-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/><path d="M8 21v-7h8v7"/></symbol>
+    <symbol id="icon-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18M7 14h2m3 0h2m-7 3h2m3 0h2"/></symbol>
+    <symbol id="icon-book" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22Z"/><path d="M4 5v14a3 3 0 0 1 3-3h13M8 7h8m-8 4h8"/></symbol>
+    <symbol id="icon-pantry" viewBox="0 0 24 24"><path d="M4 21V7l2-4h12l2 4v14ZM3 7h18M9 11v6m6-6v6"/><path d="M8 21v-4h8v4"/></symbol>
+    <symbol id="icon-basket" viewBox="0 0 24 24"><path d="m3 9 2 11h14l2-11ZM2 9h20M8 9l4-6 4 6m-8 4v4m4-4v4m4-4v4"/></symbol>
+    <symbol id="icon-cake" viewBox="0 0 24 24"><path d="M4 21V12a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v9ZM3 21h18M8 9V6m8 3V6M8 4v2m8-2v2M4 16h16"/><path d="M8 14v.01M12 14v.01M16 14v.01"/></symbol>
     <symbol id="season-leaf" viewBox="0 0 100 100"><path d="M82 12C45 13 17 27 15 57c-2 22 18 34 37 25 24-11 31-41 30-70Z" fill="currentColor"/><path d="M18 83c15-22 30-38 53-58M38 64l-2-19m17 5 16-4" fill="none" stroke="#fff9ef" stroke-width="4" stroke-linecap="round" opacity=".8"/></symbol>
     <symbol id="season-pumpkin" viewBox="0 0 100 100"><path d="M49 27c-22-12-41 5-40 32 1 24 16 34 40 24 24 10 39 0 40-24 1-27-18-44-40-32Z" fill="currentColor"/><path d="M49 29c-9 12-10 42 0 54m0-54c10 12 9 42 0 54m0-54c-2-9 2-15 10-18" fill="none" stroke="#fff5e7" stroke-width="4" stroke-linecap="round" opacity=".82"/><path d="M50 28c3-10 11-12 18-9-3 7-9 10-18 9Z" fill="#84956f"/></symbol>
     <symbol id="season-mushroom" viewBox="0 0 100 100"><path d="M16 49c2-20 17-34 35-34s33 14 35 34H16Z" fill="currentColor"/><path d="M38 49h27l7 37H31l7-37Z" fill="#fff1df"/><circle cx="39" cy="34" r="4" fill="#fff1df"/><circle cx="57" cy="26" r="3" fill="#fff1df"/><circle cx="68" cy="39" r="3" fill="#fff1df"/></symbol>
@@ -35,21 +44,40 @@
     <symbol id="season-fir" viewBox="0 0 100 100"><path d="M18 79c22-17 41-37 63-62M37 63 24 43m29 3L45 25m3 51 21 1m-4-26 22 4" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="m24 43-11 1 5 8m15-1 1 10m20-15-10-3 6-8m7 2-1-12 8 5m5 37 2 10 9-5m-10-16 11-7 1 10m-20 6 1 11 9-4" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="season-cinnamon" viewBox="0 0 100 100"><path d="m26 18 18-5 31 64-18 9Z" fill="currentColor" opacity=".75"/><path d="m49 15 17-6 29 65-17 8Z" fill="currentColor"/><path d="m26 18 18-5m13 73 18-9M49 15l17-6m12 73 17-8" fill="none" stroke="#fff2dc" stroke-width="3" stroke-linecap="round"/><circle cx="35" cy="21" r="3" fill="#fff2dc"/><circle cx="58" cy="17" r="3" fill="#fff2dc"/></symbol>
   </svg>
-  <!-- Écran d'ouverture léger : affiché avant l'initialisation de l'application. -->
-  <div id="splash" class="splash" aria-label="Ouverture de Matbakh">
-    <div class="splash-orbit splash-orbit-1"></div>
-    <div class="splash-orbit splash-orbit-2"></div>
+  <!-- Splash saisonnier, dessiné avec les SVG locaux afin de fonctionner hors ligne. -->
+  <div id="splash" class="splash" role="status" aria-label="Ouverture de Mamouni">
+    <div class="splash-scene" aria-hidden="true">
+      <svg viewBox="0 0 100 100" class="splash-art splash-art--spring splash-art--branch"><use href="#season-branch"></use></svg>
+      <svg viewBox="0 0 100 100" class="splash-art splash-art--spring splash-art--blossom"><use href="#season-blossom"></use></svg>
+      <svg viewBox="0 0 100 100" class="splash-art splash-art--spring splash-art--petal"><use href="#season-petal"></use></svg>
+      <svg viewBox="0 0 100 100" class="splash-art splash-art--summer splash-art--sun"><use href="#season-sun"></use></svg>
+      <svg viewBox="0 0 100 100" class="splash-art splash-art--summer splash-art--lemon"><use href="#season-lemon"></use></svg>
+      <svg viewBox="0 0 100 100" class="splash-art splash-art--summer splash-art--herb"><use href="#season-herb"></use></svg>
+      <svg viewBox="0 0 100 100" class="splash-art splash-art--autumn splash-art--leaf"><use href="#season-leaf"></use></svg>
+      <svg viewBox="0 0 100 100" class="splash-art splash-art--autumn splash-art--pumpkin"><use href="#season-pumpkin"></use></svg>
+      <svg viewBox="0 0 100 100" class="splash-art splash-art--autumn splash-art--chestnut"><use href="#season-chestnut"></use></svg>
+      <svg viewBox="0 0 100 100" class="splash-art splash-art--halloween splash-art--moon"><use href="#season-moon"></use></svg>
+      <svg viewBox="0 0 100 100" class="splash-art splash-art--halloween splash-art--bat"><use href="#season-bat"></use></svg>
+      <svg viewBox="0 0 100 100" class="splash-art splash-art--halloween splash-art--ghost"><use href="#season-ghost"></use></svg>
+      <svg viewBox="0 0 100 100" class="splash-art splash-art--halloween splash-art--sparkle"><use href="#season-sparkle"></use></svg>
+      <svg viewBox="0 0 100 100" class="splash-art splash-art--halloween splash-art--candle"><use href="#season-candle"></use></svg>
+      <svg viewBox="0 0 100 100" class="splash-art splash-art--winter splash-art--fir"><use href="#season-fir"></use></svg>
+      <svg viewBox="0 0 100 100" class="splash-art splash-art--winter splash-art--snowflake"><use href="#season-snowflake"></use></svg>
+      <svg viewBox="0 0 100 100" class="splash-art splash-art--winter splash-art--cinnamon"><use href="#season-cinnamon"></use></svg>
+      <span class="splash-glow splash-glow--one"></span><span class="splash-glow splash-glow--two"></span>
+    </div>
     <div class="splash-card">
-      <div class="splash-mark" dir="rtl">م<span>♡</span></div>
-      <div class="splash-title" dir="rtl">مَطْبَخ</div>
-      <div class="splash-subtitle">Carnet de cuisine de la maison</div>
+      <div class="splash-mark" aria-hidden="true">♡</div>
+      <div class="splash-title">Mamouni<span>♥</span></div>
+      <div class="splash-subtitle">Votre cuisine, au fil des saisons</div>
+      <div class="splash-progress" aria-hidden="true"><i></i></div>
     </div>
   </div>
 
   <div id="app">
     <header class="topbar">
       <div>
-        <div class="brand" dir="rtl">مَطْبَخ <span>♡</span></div>
+        <div class="brand">Mamouni <span>♥</span></div>
         <div class="subtitle">Carnet de cuisine de la maison</div>
       </div>
       <div class="top-actions"><button class="icon-btn" onclick="showConverter()" title="Convertisseur">↔</button><button class="icon-btn" onclick="showSeasonPicker()" title="Changer la saison">🌿</button><button class="icon-btn" onclick="showDataManager()" title="Sauvegarder ou restaurer">💾</button></div>
@@ -64,11 +92,11 @@
     </main>
 
     <nav class="bottom-nav">
-      <button data-view="home" class="nav-btn active"><span>🏠</span><small>Accueil</small></button>
-      <button data-view="meals" class="nav-btn"><span>📅</span><small>Mes repas</small></button>
-      <button data-view="recipes" class="nav-btn"><span>🍳</span><small>Recettes</small></button>
-      <button data-view="stock" class="nav-btn"><span>🧺</span><small>Stock</small></button>
-      <button data-view="shopping" class="nav-btn"><span>🛒</span><small>Courses</small></button>
+      <button data-view="home" class="nav-btn active"><span><svg viewBox="0 0 24 24"><use href="#icon-home"></use></svg></span><small>Accueil</small></button>
+      <button data-view="meals" class="nav-btn"><span><svg viewBox="0 0 24 24"><use href="#icon-calendar"></use></svg></span><small>Repas</small></button>
+      <button data-view="recipes" class="nav-btn"><span><svg viewBox="0 0 24 24"><use href="#icon-book"></use></svg></span><small>Recettes</small></button>
+      <button data-view="stock" class="nav-btn"><span><svg viewBox="0 0 24 24"><use href="#icon-pantry"></use></svg></span><small>Stock</small></button>
+      <button data-view="shopping" class="nav-btn"><span><svg viewBox="0 0 24 24"><use href="#icon-basket"></use></svg></span><small>Courses</small></button>
     </nav>
   </div>
 
@@ -92,7 +120,7 @@
   window.setTimeout(function(){
     var splash=document.getElementById('splash');
     if(splash && !window.__matbakhBootFinished){ splash.classList.add('is-hidden'); }
-  }, 1400);
+  }, 1250);
   window.setTimeout(function(){
     if(window.__matbakhBootFinished) return;
     var main=document.getElementById('main');
@@ -102,7 +130,7 @@
     }
   }, 3800);
 </script>
-<script src="data-validation.js?v=v5-storage-themes"></script>
-<script src="app.js?v=v5-storage-themes"></script>
+<script src="data-validation.js?v=v6-seasonal-identity-r1"></script>
+<script src="app.js?v=v6-seasonal-identity-r1"></script>
 </body>
 </html>

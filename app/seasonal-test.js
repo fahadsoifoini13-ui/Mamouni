@@ -1,4 +1,4 @@
-/* Matbakh — seasonal visual test layer v3 */
+/* Matbakh — seasonal visual test layer v4 */
 (function(){
   'use strict';
   const params=new URLSearchParams(location.search);
@@ -7,7 +7,7 @@
   if(!isTest) return;
   const rootClass='seasonal-test-'+requested;
 
-  const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+  const esc=s=>String(s??'').replace(/[&<>\"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#039;'}[m]));
 
   function installTheme(){
     document.body.dataset.seasonTest=requested;
@@ -17,7 +17,7 @@
       link=document.createElement('link');
       link.id='seasonalTestStyles';
       link.rel='stylesheet';
-      link.href='./seasonal-test.css?v=seasonal-test-v3';
+      link.href='./seasonal-test.css?v=seasonal-test-v4';
       document.head.appendChild(link);
     }
   }
@@ -101,8 +101,8 @@
   }
 
   function showSplash(){
-    if(sessionStorage.getItem('matbakh-seasonal-splash-v3')) return;
-    sessionStorage.setItem('matbakh-seasonal-splash-v3','1');
+    if(sessionStorage.getItem('matbakh-seasonal-splash-v4')) return;
+    sessionStorage.setItem('matbakh-seasonal-splash-v4','1');
     const old=document.getElementById('seasonalTestSplash'); if(old) old.remove();
     const splash=document.createElement('div');
     splash.id='seasonalTestSplash'; splash.className='st-splash';

@@ -4,17 +4,19 @@
 (function(){
   const CHEF_ICON = '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M18 37c-5-2-8-6-8-11 0-7 6-12 13-12 2-6 7-10 13-10s11 4 13 10c7 0 13 5 13 12 0 5-3 9-8 11v13H18V37Z" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linejoin="round"/><path d="M14 38h36M21 48h22" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/></svg>';
 
+  function setPublicBrand(el,html,plain){
+    if(!el)return;
+    if(el.textContent.trim()!==plain)el.innerHTML=html;
+  }
+
   function publicBrand(){
-    const brand=document.querySelector('.brand');
-    if(brand) brand.innerHTML='مَطْبَخ <span>♥</span>';
-    const wordmark=document.querySelector('.home-wordmark');
-    if(wordmark) wordmark.innerHTML='مَطْبَخ<span>♥</span>';
-    const splashTitle=document.querySelector('.splash-title');
-    if(splashTitle) splashTitle.innerHTML='مَطْبَخ<span>♥</span>';
+    setPublicBrand(document.querySelector('.brand'),'مَطْبَخ <span>♥</span>','مَطْبَخ ♥');
+    setPublicBrand(document.querySelector('.home-wordmark'),'مَطْبَخ<span>♥</span>','مَطْبَخ♥');
+    setPublicBrand(document.querySelector('.splash-title'),'مَطْبَخ<span>♥</span>','مَطْبَخ♥');
     const splash=document.getElementById('splash');
-    if(splash) splash.setAttribute('aria-label','Ouverture de Matbakh');
+    if(splash && splash.getAttribute('aria-label')!=='Ouverture de Matbakh')splash.setAttribute('aria-label','Ouverture de Matbakh');
     const mark=document.querySelector('.splash-mark');
-    if(mark) mark.innerHTML=CHEF_ICON;
+    if(mark && !mark.querySelector('svg'))mark.innerHTML=CHEF_ICON;
   }
 
   function enhanceHome(){

@@ -1,0 +1,137 @@
+/*
+ * Matbakh — TEST DA Automne + Halloween
+ * Phase 1 : uniquement accueil + splash.
+ * Les autres onglets restent fonctionnels et inchangés.
+ */
+
+/* ---------- Base accueil : composition proche de la maquette ---------- */
+#app{background:transparent}
+main{padding-top:12px}
+.home-hero{padding:16px 17px 14px;border-radius:26px;box-shadow:0 13px 34px rgba(93,63,53,.10)}
+.home-seasonline{font-size:9px;letter-spacing:.10em}
+.home-wordmark{font-family:"Noto Naskh Arabic","Amiri","Geeza Pro",serif!important;font-size:34px!important;font-weight:800!important;direction:rtl;letter-spacing:0!important;color:#d93f61!important}
+.home-wordmark span{font-family:system-ui,sans-serif!important;font-size:14px!important;margin-left:4px!important;color:#f16c80!important}
+.home-hero h1{font-size:23px;margin-top:6px}
+.home-hero>p{font-size:11px}
+.home-hero .stat-row{display:none}
+.home-shortcuts{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:10px 0 18px}
+.shortcut{min-height:74px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;text-align:center;padding:9px 7px;border-radius:16px;font-size:10px;font-weight:800}
+.shortcut svg{width:22px;height:22px}
+
+/* Le bloc inférieur de l'accueil est volontairement réduit pendant le test DA. */
+.home-shortcuts~.section-title:not(.home-section-title),
+.home-shortcuts~.section-title:not(.home-section-title)+.card{display:none}
+
+/* Aujourd'hui devient une vraie carte de programme. */
+.home-section-title{margin:0!important;padding:14px 15px 7px;border:1px solid rgba(164,124,104,.14);border-bottom:0;border-radius:20px 20px 0 0;background:rgba(255,253,250,.96)}
+.home-section-title h2{font-size:16px!important;margin:0!important}
+.home-section-title .meta{font-size:9px}
+.home-section-title + .grid{gap:0;padding:0 10px 10px;border:1px solid rgba(164,124,104,.14);border-top:0;border-radius:0 0 20px 20px;background:rgba(255,253,250,.96);box-shadow:var(--card-shadow)}
+.home-section-title + .grid .meal-slot{min-height:67px;padding:9px 2px;border:0;border-bottom:1px solid rgba(164,124,104,.12);border-radius:0;background:transparent;box-shadow:none}
+.home-section-title + .grid .meal-slot:last-child{border-bottom:0}
+.home-section-title + .grid .meal-slot>span{font-size:17px}
+.home-section-title + .grid .meal-slot .btn{display:none}
+.home-section-title + .grid .meal-slot button:not(.btn){font-size:11px;text-align:left}
+.home-section-title + .grid .meal-slot .meta{font-size:9px;margin-top:2px}
+
+/* ---------- AUTOMNE ---------- */
+body[data-season="autumn"]{
+  --brand-accent:#e65b3f;
+  --brand-accent-strong:#c94b31;
+  --season-tint:#d58b52;
+  --season-surface:#fff1df;
+  --theme-halo:rgba(215,127,69,.30);
+  --ambience-background:
+    radial-gradient(ellipse at 4% 9%,rgba(205,119,65,.34),transparent 29%),
+    radial-gradient(ellipse at 97% 32%,rgba(226,166,91,.28),transparent 30%),
+    linear-gradient(155deg,#f5dfc8 0%,#fff8ee 48%,#ead8c6 100%);
+}
+body[data-season="autumn"] .home-hero{
+  background:
+    radial-gradient(circle at 91% 15%,rgba(237,171,91,.30),transparent 26%),
+    linear-gradient(145deg,#fffaf2 0%,#f3dfca 100%);
+  border-color:rgba(177,112,70,.18);
+}
+body[data-season="autumn"] .home-hero:after{
+  border-color:rgba(177,112,70,.20);
+  background:radial-gradient(ellipse at 95% 8%,rgba(213,139,82,.25),transparent 34%);
+}
+body[data-season="autumn"] .home-seasonline{color:#896451}
+body[data-season="autumn"] .season-tag{background:#f2d5b7;color:#86523c}
+body[data-season="autumn"] .shortcut svg{stroke:#d45f3e}
+body[data-season="autumn"] .home-section-title,
+body[data-season="autumn"] .home-section-title + .grid{background:rgba(255,251,245,.96);border-color:rgba(169,119,82,.18)}
+body[data-season="autumn"] .home-section-title h2{color:#63483b}
+
+/* ---------- HALLOWEEN ---------- */
+body[data-special-event="halloween"]{
+  --brand-accent:#f05b36;
+  --brand-accent-strong:#d94426;
+  --season-tint:#e38a45;
+  --season-surface:#fff1df;
+  --theme-halo:rgba(232,143,69,.34);
+  --ambience-background:
+    radial-gradient(ellipse at 86% 6%,rgba(232,152,78,.34),transparent 28%),
+    radial-gradient(ellipse at 9% 70%,rgba(111,72,119,.34),transparent 31%),
+    linear-gradient(155deg,#30233b 0%,#654257 37%,#c57b55 100%);
+}
+body[data-special-event="halloween"] #app{background:rgba(255,247,239,.90)}
+body[data-special-event="halloween"] .topbar{background:rgba(48,36,55,.91);border-bottom-color:rgba(255,238,218,.14);color:#fff2e7}
+body[data-special-event="halloween"] .brand{color:#fff4ec!important}
+body[data-special-event="halloween"] .brand span{color:#ff7181!important}
+body[data-special-event="halloween"] .subtitle{color:#e8d3ca}
+body[data-special-event="halloween"] .icon-btn{background:rgba(255,247,238,.10);border-color:rgba(255,236,215,.18);color:#fff1e5}
+body[data-special-event="halloween"] .home-hero{
+  background:
+    radial-gradient(circle at 88% 11%,rgba(238,180,104,.25),transparent 27%),
+    linear-gradient(145deg,#35263f 0%,#624054 57%,#895b4e 100%);
+  border-color:rgba(255,234,211,.20);
+  box-shadow:0 17px 38px rgba(39,23,43,.24);
+}
+body[data-special-event="halloween"] .home-hero:after{border-color:rgba(255,235,214,.18);background:radial-gradient(ellipse at 94% 9%,rgba(245,191,112,.26),transparent 36%)}
+body[data-special-event="halloween"] .home-seasonline{color:#f5dfd1}
+body[data-special-event="halloween"] .season-tag{background:rgba(255,223,190,.16);color:#ffe4c9;border:1px solid rgba(255,224,195,.18)}
+body[data-special-event="halloween"] .home-wordmark{color:#fff4eb!important}
+body[data-special-event="halloween"] .home-wordmark span{color:#ff7181!important}
+body[data-special-event="halloween"] .home-hero h1{color:#fff1e6}
+body[data-special-event="halloween"] .home-hero>p{color:#e9d2c6}
+body[data-special-event="halloween"] .shortcut{background:rgba(255,251,245,.97);border-color:rgba(255,255,255,.28)}
+body[data-special-event="halloween"] .shortcut svg{stroke:#ef5938}
+body[data-special-event="halloween"] .home-section-title,
+body[data-special-event="halloween"] .home-section-title + .grid{background:rgba(255,250,243,.97);border-color:rgba(99,67,78,.18)}
+body[data-special-event="halloween"] .home-section-title h2{color:#4e3c42}
+
+/* Décor existant : plus éditorial, moins "icône flottante". */
+body[data-season="autumn"] .season-art{filter:drop-shadow(0 7px 12px rgba(91,58,42,.12));--art-opacity:.34}
+body[data-special-event="halloween"] .season-art--moon{opacity:.55!important}
+body[data-special-event="halloween"] .season-art--bat{opacity:.42!important}
+body[data-special-event="halloween"] .season-art--ghost{opacity:.52!important}
+body[data-special-event="halloween"] .season-art--pumpkin{opacity:.48!important}
+body[data-special-event="halloween"] .season-art--candle{opacity:.42!important}
+
+/* ---------- SPLASH : composition proche de la maquette ---------- */
+.splash-card{width:min(100%,330px);padding:17px 16px 18px;border-radius:30px;background:rgba(255,251,246,.30);border-color:rgba(255,255,255,.56);box-shadow:0 20px 58px rgba(70,45,42,.09);backdrop-filter:blur(4px)}
+.splash-mark{width:64px;height:64px;margin-bottom:10px;border:0;border-radius:0;background:transparent;box-shadow:none;color:var(--brand-accent);font-size:0;transform:none}
+.splash-mark::before{content:"♨";font-family:Georgia,serif;font-size:47px;line-height:1}
+.splash-title{font-family:"Brush Script MT","Segoe Script",cursive;font-size:clamp(44px,13vw,60px);color:#d93f61}
+.splash-subtitle{font-size:12px;color:#795d55;margin-top:12px}
+body[data-season="autumn"] .splash-mark{color:#d94e37}
+body[data-season="autumn"] .splash-title{color:#d94e37}
+body[data-season="autumn"] .splash-progress i{background:#e35d3e}
+body[data-special-event="halloween"] .splash-card{background:rgba(45,31,54,.22);border-color:rgba(255,229,204,.22);box-shadow:0 20px 60px rgba(20,12,27,.22)}
+body[data-special-event="halloween"] .splash-mark{color:#f26a3c}
+body[data-special-event="halloween"] .splash-title{color:#fff3e9;text-shadow:0 2px 16px rgba(255,197,135,.16)}
+body[data-special-event="halloween"] .splash-progress{background:rgba(255,235,215,.20)}
+body[data-special-event="halloween"] .splash-progress i{background:#ef633c}
+
+@media(max-width:650px){
+  main{padding:10px 12px 20px}
+  .home-hero{padding:15px 14px 13px}
+  .home-wordmark{font-size:32px!important}
+  .home-section-title{padding:13px 13px 6px}
+  .home-section-title + .grid{padding:0 9px 8px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .home-wordmark,.home-section-title,.shortcut,.meal-slot{transition:none!important}
+}

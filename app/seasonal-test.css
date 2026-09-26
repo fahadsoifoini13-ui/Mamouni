@@ -34,6 +34,16 @@ main{padding-top:12px}
 .home-section-title + .grid .meal-slot button:not(.btn){font-size:11px;text-align:left}
 .home-section-title + .grid .meal-slot .meta{font-size:9px;margin-top:2px}
 
+/* Identité publique : aucun nom interne « Mamouni » visible. */
+.brand{font-size:0!important;direction:rtl}
+.brand::before{content:"مَطْبَخ";font-family:"Noto Naskh Arabic","Amiri","Geeza Pro",serif;font-size:30px;font-weight:800;letter-spacing:0;color:#d93f61}
+.brand span{font-size:0!important}
+.home-wordmark{font-size:0!important}
+.home-wordmark::before{content:"مَطْبَخ";font-family:"Noto Naskh Arabic","Amiri","Geeza Pro",serif;font-size:34px;font-weight:800;line-height:1;color:#d93f61}
+.home-wordmark span{font-size:0!important}
+.splash-title{font-size:0!important}
+.splash-title::before{content:"مَطْبَخ";font-family:"Noto Naskh Arabic","Amiri","Geeza Pro",serif;font-size:clamp(46px,13vw,62px);font-weight:800;line-height:1;color:#d93f61}
+
 /* ---------- AUTOMNE ---------- */
 body[data-season="autumn"]{
   --brand-accent:#e65b3f;
@@ -78,6 +88,7 @@ body[data-special-event="halloween"]{
 body[data-special-event="halloween"] #app{background:rgba(255,247,239,.90)}
 body[data-special-event="halloween"] .topbar{background:rgba(48,36,55,.91);border-bottom-color:rgba(255,238,218,.14);color:#fff2e7}
 body[data-special-event="halloween"] .brand{color:#fff4ec!important}
+body[data-special-event="halloween"] .brand::before{color:#fff4ec!important}
 body[data-special-event="halloween"] .brand span{color:#ff7181!important}
 body[data-special-event="halloween"] .subtitle{color:#e8d3ca}
 body[data-special-event="halloween"] .icon-btn{background:rgba(255,247,238,.10);border-color:rgba(255,236,215,.18);color:#fff1e5}
@@ -92,6 +103,7 @@ body[data-special-event="halloween"] .home-hero:after{border-color:rgba(255,235,
 body[data-special-event="halloween"] .home-seasonline{color:#f5dfd1}
 body[data-special-event="halloween"] .season-tag{background:rgba(255,223,190,.16);color:#ffe4c9;border:1px solid rgba(255,224,195,.18)}
 body[data-special-event="halloween"] .home-wordmark{color:#fff4eb!important}
+body[data-special-event="halloween"] .home-wordmark::before{color:#fff4eb!important}
 body[data-special-event="halloween"] .home-wordmark span{color:#ff7181!important}
 body[data-special-event="halloween"] .home-hero h1{color:#fff1e6}
 body[data-special-event="halloween"] .home-hero>p{color:#e9d2c6}
@@ -113,21 +125,21 @@ body[data-special-event="halloween"] .season-art--candle{opacity:.42!important}
 .splash-card{width:min(100%,330px);padding:17px 16px 18px;border-radius:30px;background:rgba(255,251,246,.30);border-color:rgba(255,255,255,.56);box-shadow:0 20px 58px rgba(70,45,42,.09);backdrop-filter:blur(4px)}
 .splash-mark{width:64px;height:64px;margin-bottom:10px;border:0;border-radius:0;background:transparent;box-shadow:none;color:var(--brand-accent);font-size:0;transform:none}
 .splash-mark::before{content:"♨";font-family:Georgia,serif;font-size:47px;line-height:1}
-.splash-title{font-family:"Brush Script MT","Segoe Script",cursive;font-size:clamp(44px,13vw,60px);color:#d93f61}
+.splash-title{font-family:"Noto Naskh Arabic","Amiri","Geeza Pro",serif!important;direction:rtl}
 .splash-subtitle{font-size:12px;color:#795d55;margin-top:12px}
 body[data-season="autumn"] .splash-mark{color:#d94e37}
-body[data-season="autumn"] .splash-title{color:#d94e37}
+body[data-season="autumn"] .splash-title::before{color:#d94e37}
 body[data-season="autumn"] .splash-progress i{background:#e35d3e}
 body[data-special-event="halloween"] .splash-card{background:rgba(45,31,54,.22);border-color:rgba(255,229,204,.22);box-shadow:0 20px 60px rgba(20,12,27,.22)}
 body[data-special-event="halloween"] .splash-mark{color:#f26a3c}
-body[data-special-event="halloween"] .splash-title{color:#fff3e9;text-shadow:0 2px 16px rgba(255,197,135,.16)}
+body[data-special-event="halloween"] .splash-title::before{color:#fff3e9;text-shadow:0 2px 16px rgba(255,197,135,.16)}
 body[data-special-event="halloween"] .splash-progress{background:rgba(255,235,215,.20)}
 body[data-special-event="halloween"] .splash-progress i{background:#ef633c}
 
 @media(max-width:650px){
   main{padding:10px 12px 20px}
   .home-hero{padding:15px 14px 13px}
-  .home-wordmark{font-size:32px!important}
+  .home-wordmark::before{font-size:32px}
   .home-section-title{padding:13px 13px 6px}
   .home-section-title + .grid{padding:0 9px 8px}
 }

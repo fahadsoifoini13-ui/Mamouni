@@ -33,6 +33,7 @@ main{padding-top:12px}
 .home-section-title + .grid .meal-slot .btn{display:none}
 .home-section-title + .grid .meal-slot button:not(.btn){font-size:11px;text-align:left}
 .home-section-title + .grid .meal-slot .meta{font-size:9px;margin-top:2px}
+.home-program-cta{display:block!important;width:100%;margin-top:5px;padding:10px 12px!important;border-radius:11px!important;background:var(--brand-accent)!important;color:#fff!important;font-size:11px!important;box-shadow:0 5px 12px var(--theme-halo)!important}
 
 /* Identité publique : aucun nom interne « Mamouni » visible. */
 .brand{font-size:0!important;direction:rtl}

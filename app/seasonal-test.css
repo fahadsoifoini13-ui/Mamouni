@@ -1,150 +1,32 @@
-/*
- * Matbakh — TEST DA Automne + Halloween
- * Phase 1 : uniquement accueil + splash.
- * Les autres onglets restent fonctionnels et inchangés.
- */
-
-/* ---------- Base accueil : composition proche de la maquette ---------- */
-#app{background:transparent}
-main{padding-top:12px}
-.home-hero{padding:16px 17px 14px;border-radius:26px;box-shadow:0 13px 34px rgba(93,63,53,.10)}
-.home-seasonline{font-size:9px;letter-spacing:.10em}
-.home-wordmark{font-family:"Noto Naskh Arabic","Amiri","Geeza Pro",serif!important;font-size:34px!important;font-weight:800!important;direction:rtl;letter-spacing:0!important;color:#d93f61!important}
-.home-wordmark span{font-family:system-ui,sans-serif!important;font-size:14px!important;margin-left:4px!important;color:#f16c80!important}
-.home-hero h1{font-size:23px;margin-top:6px}
-.home-hero>p{font-size:11px}
-.home-hero .stat-row{display:none}
-.home-shortcuts{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:10px 0 18px}
-.shortcut{min-height:74px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;text-align:center;padding:9px 7px;border-radius:16px;font-size:10px;font-weight:800}
-.shortcut svg{width:22px;height:22px}
-
-/* Le bloc inférieur de l'accueil est volontairement réduit pendant le test DA. */
-.home-shortcuts~.section-title:not(.home-section-title),
-.home-shortcuts~.section-title:not(.home-section-title)+.card{display:none}
-
-/* Aujourd'hui devient une vraie carte de programme. */
-.home-section-title{margin:0!important;padding:14px 15px 7px;border:1px solid rgba(164,124,104,.14);border-bottom:0;border-radius:20px 20px 0 0;background:rgba(255,253,250,.96)}
-.home-section-title h2{font-size:16px!important;margin:0!important}
-.home-section-title .meta{font-size:9px}
-.home-section-title + .grid{gap:0;padding:0 10px 10px;border:1px solid rgba(164,124,104,.14);border-top:0;border-radius:0 0 20px 20px;background:rgba(255,253,250,.96);box-shadow:var(--card-shadow)}
-.home-section-title + .grid .meal-slot{min-height:67px;padding:9px 2px;border:0;border-bottom:1px solid rgba(164,124,104,.12);border-radius:0;background:transparent;box-shadow:none}
-.home-section-title + .grid .meal-slot:last-child{border-bottom:0}
-.home-section-title + .grid .meal-slot>span{font-size:17px}
-.home-section-title + .grid .meal-slot .btn{display:none}
-.home-section-title + .grid .meal-slot button:not(.btn){font-size:11px;text-align:left}
-.home-section-title + .grid .meal-slot .meta{font-size:9px;margin-top:2px}
-.home-program-cta{display:block!important;width:100%;margin-top:5px;padding:10px 12px!important;border-radius:11px!important;background:var(--brand-accent)!important;color:#fff!important;font-size:11px!important;box-shadow:0 5px 12px var(--theme-halo)!important}
-
-/* Identité publique : aucun nom interne « Mamouni » visible. */
-.brand{font-size:0!important;direction:rtl}
-.brand::before{content:"مَطْبَخ";font-family:"Noto Naskh Arabic","Amiri","Geeza Pro",serif;font-size:30px;font-weight:800;letter-spacing:0;color:#d93f61}
-.brand span{font-size:0!important}
-.home-wordmark{font-size:0!important}
-.home-wordmark::before{content:"مَطْبَخ";font-family:"Noto Naskh Arabic","Amiri","Geeza Pro",serif;font-size:34px;font-weight:800;line-height:1;color:#d93f61}
-.home-wordmark span{font-size:0!important}
-.splash-title{font-size:0!important}
-.splash-title::before{content:"مَطْبَخ";font-family:"Noto Naskh Arabic","Amiri","Geeza Pro",serif;font-size:clamp(46px,13vw,62px);font-weight:800;line-height:1;color:#d93f61}
-
-/* ---------- AUTOMNE ---------- */
-body[data-season="autumn"]{
-  --brand-accent:#e65b3f;
-  --brand-accent-strong:#c94b31;
-  --season-tint:#d58b52;
-  --season-surface:#fff1df;
-  --theme-halo:rgba(215,127,69,.30);
-  --ambience-background:
-    radial-gradient(ellipse at 4% 9%,rgba(205,119,65,.34),transparent 29%),
-    radial-gradient(ellipse at 97% 32%,rgba(226,166,91,.28),transparent 30%),
-    linear-gradient(155deg,#f5dfc8 0%,#fff8ee 48%,#ead8c6 100%);
-}
-body[data-season="autumn"] .home-hero{
-  background:
-    radial-gradient(circle at 91% 15%,rgba(237,171,91,.30),transparent 26%),
-    linear-gradient(145deg,#fffaf2 0%,#f3dfca 100%);
-  border-color:rgba(177,112,70,.18);
-}
-body[data-season="autumn"] .home-hero:after{
-  border-color:rgba(177,112,70,.20);
-  background:radial-gradient(ellipse at 95% 8%,rgba(213,139,82,.25),transparent 34%);
-}
-body[data-season="autumn"] .home-seasonline{color:#896451}
-body[data-season="autumn"] .season-tag{background:#f2d5b7;color:#86523c}
-body[data-season="autumn"] .shortcut svg{stroke:#d45f3e}
-body[data-season="autumn"] .home-section-title,
-body[data-season="autumn"] .home-section-title + .grid{background:rgba(255,251,245,.96);border-color:rgba(169,119,82,.18)}
-body[data-season="autumn"] .home-section-title h2{color:#63483b}
-
-/* ---------- HALLOWEEN ---------- */
-body[data-special-event="halloween"]{
-  --brand-accent:#f05b36;
-  --brand-accent-strong:#d94426;
-  --season-tint:#e38a45;
-  --season-surface:#fff1df;
-  --theme-halo:rgba(232,143,69,.34);
-  --ambience-background:
-    radial-gradient(ellipse at 86% 6%,rgba(232,152,78,.34),transparent 28%),
-    radial-gradient(ellipse at 9% 70%,rgba(111,72,119,.34),transparent 31%),
-    linear-gradient(155deg,#30233b 0%,#654257 37%,#c57b55 100%);
-}
-body[data-special-event="halloween"] #app{background:rgba(255,247,239,.90)}
-body[data-special-event="halloween"] .topbar{background:rgba(48,36,55,.91);border-bottom-color:rgba(255,238,218,.14);color:#fff2e7}
-body[data-special-event="halloween"] .brand{color:#fff4ec!important}
-body[data-special-event="halloween"] .brand::before{color:#fff4ec!important}
-body[data-special-event="halloween"] .brand span{color:#ff7181!important}
-body[data-special-event="halloween"] .subtitle{color:#e8d3ca}
-body[data-special-event="halloween"] .icon-btn{background:rgba(255,247,238,.10);border-color:rgba(255,236,215,.18);color:#fff1e5}
-body[data-special-event="halloween"] .home-hero{
-  background:
-    radial-gradient(circle at 88% 11%,rgba(238,180,104,.25),transparent 27%),
-    linear-gradient(145deg,#35263f 0%,#624054 57%,#895b4e 100%);
-  border-color:rgba(255,234,211,.20);
-  box-shadow:0 17px 38px rgba(39,23,43,.24);
-}
-body[data-special-event="halloween"] .home-hero:after{border-color:rgba(255,235,214,.18);background:radial-gradient(ellipse at 94% 9%,rgba(245,191,112,.26),transparent 36%)}
-body[data-special-event="halloween"] .home-seasonline{color:#f5dfd1}
-body[data-special-event="halloween"] .season-tag{background:rgba(255,223,190,.16);color:#ffe4c9;border:1px solid rgba(255,224,195,.18)}
-body[data-special-event="halloween"] .home-wordmark{color:#fff4eb!important}
-body[data-special-event="halloween"] .home-wordmark::before{color:#fff4eb!important}
-body[data-special-event="halloween"] .home-wordmark span{color:#ff7181!important}
-body[data-special-event="halloween"] .home-hero h1{color:#fff1e6}
-body[data-special-event="halloween"] .home-hero>p{color:#e9d2c6}
-body[data-special-event="halloween"] .shortcut{background:rgba(255,251,245,.97);border-color:rgba(255,255,255,.28)}
-body[data-special-event="halloween"] .shortcut svg{stroke:#ef5938}
-body[data-special-event="halloween"] .home-section-title,
-body[data-special-event="halloween"] .home-section-title + .grid{background:rgba(255,250,243,.97);border-color:rgba(99,67,78,.18)}
-body[data-special-event="halloween"] .home-section-title h2{color:#4e3c42}
-
-/* Décor existant : plus éditorial, moins "icône flottante". */
-body[data-season="autumn"] .season-art{filter:drop-shadow(0 7px 12px rgba(91,58,42,.12));--art-opacity:.34}
-body[data-special-event="halloween"] .season-art--moon{opacity:.55!important}
-body[data-special-event="halloween"] .season-art--bat{opacity:.42!important}
-body[data-special-event="halloween"] .season-art--ghost{opacity:.52!important}
-body[data-special-event="halloween"] .season-art--pumpkin{opacity:.48!important}
-body[data-special-event="halloween"] .season-art--candle{opacity:.42!important}
-
-/* ---------- SPLASH : composition proche de la maquette ---------- */
-.splash-card{width:min(100%,330px);padding:17px 16px 18px;border-radius:30px;background:rgba(255,251,246,.30);border-color:rgba(255,255,255,.56);box-shadow:0 20px 58px rgba(70,45,42,.09);backdrop-filter:blur(4px)}
-.splash-mark{width:64px;height:64px;margin-bottom:10px;border:0;border-radius:0;background:transparent;box-shadow:none;color:var(--brand-accent);font-size:0;transform:none}
-.splash-mark::before{content:"♨";font-family:Georgia,serif;font-size:47px;line-height:1}
-.splash-title{font-family:"Noto Naskh Arabic","Amiri","Geeza Pro",serif!important;direction:rtl}
-.splash-subtitle{font-size:12px;color:#795d55;margin-top:12px}
-body[data-season="autumn"] .splash-mark{color:#d94e37}
-body[data-season="autumn"] .splash-title::before{color:#d94e37}
-body[data-season="autumn"] .splash-progress i{background:#e35d3e}
-body[data-special-event="halloween"] .splash-card{background:rgba(45,31,54,.22);border-color:rgba(255,229,204,.22);box-shadow:0 20px 60px rgba(20,12,27,.22)}
-body[data-special-event="halloween"] .splash-mark{color:#f26a3c}
-body[data-special-event="halloween"] .splash-title::before{color:#fff3e9;text-shadow:0 2px 16px rgba(255,197,135,.16)}
-body[data-special-event="halloween"] .splash-progress{background:rgba(255,235,215,.20)}
-body[data-special-event="halloween"] .splash-progress i{background:#ef633c}
-
-@media(max-width:650px){
-  main{padding:10px 12px 20px}
-  .home-hero{padding:15px 14px 13px}
-  .home-wordmark::before{font-size:32px}
-  .home-section-title{padding:13px 13px 6px}
-  .home-section-title + .grid{padding:0 9px 8px}
-}
-
-@media(prefers-reduced-motion:reduce){
-  .home-wordmark,.home-section-title,.shortcut,.meal-slot{transition:none!important}
-}
+/* Matbakh — seasonal visual test v3: full home + splash */
+:root{--st-ink:#57443d;--st-paper:#fffaf2;--st-border:rgba(114,77,57,.16);--st-pink:#e94467}
+body.seasonal-test-autumn{--st-bg:#f4e0cd;--st-panel:#fffaf3;--st-accent:#ef5b3f;--st-accent2:#c94d35;--st-deep:#67483c;--st-deco:#b96a3f}
+body.seasonal-test-halloween{--st-bg:#34253d;--st-panel:#fff6ed;--st-accent:#f05b37;--st-accent2:#d84a2d;--st-deep:#fff0e5;--st-deco:#f09b55}
+body.seasonal-test-autumn,body.seasonal-test-halloween{background:var(--st-bg)!important}
+.seasonal-original-home{display:none!important}
+#seasonalTestHome{position:relative;z-index:8;min-height:100vh;display:flex;flex-direction:column;padding-bottom:86px;overflow:hidden;color:var(--st-ink)}
+#seasonalTestHome:before,#seasonalTestHome:after{content:"";position:absolute;pointer-events:none;z-index:-1}
+body.seasonal-test-autumn #seasonalTestHome{background:radial-gradient(circle at 3% 28%,rgba(196,122,70,.18),transparent 28%),radial-gradient(circle at 96% 63%,rgba(224,157,83,.20),transparent 31%),linear-gradient(145deg,#f3dfca 0%,#fff8ef 48%,#ead8c6 100%)}
+body.seasonal-test-halloween #seasonalTestHome{background:radial-gradient(circle at 85% 13%,rgba(237,151,77,.30),transparent 27%),radial-gradient(circle at 12% 48%,rgba(117,71,122,.35),transparent 32%),linear-gradient(155deg,#30233b 0%,#654357 42%,#c47a55 100%);color:#fff1e6}
+body.seasonal-test-autumn #seasonalTestHome:before{content:"🍂  🍁  🍂";top:104px;left:-14px;font-size:50px;opacity:.18;transform:rotate(-8deg)}
+body.seasonal-test-autumn #seasonalTestHome:after{content:"🎃  🍂";right:-18px;bottom:120px;font-size:52px;opacity:.20}
+body.seasonal-test-halloween #seasonalTestHome:before{content:"🌙   🦇";right:-12px;top:100px;font-size:56px;opacity:.28}
+body.seasonal-test-halloween #seasonalTestHome:after{content:"🎃  🕯️";left:-10px;bottom:120px;font-size:52px;opacity:.26}
+.st-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:22px 20px 15px;background:rgba(255,250,245,.72);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.55)}
+body.seasonal-test-halloween .st-header{background:rgba(38,27,46,.74);border-bottom-color:rgba(255,235,214,.12)}
+.st-brand-wrap{min-width:0}.st-brand{font-family:"Noto Naskh Arabic","Amiri","Geeza Pro",serif;font-size:37px;font-weight:800;line-height:.9;color:#d83f61;direction:rtl;text-align:left}.st-brand span{font-family:system-ui;font-size:13px;color:#f2677e;margin-right:3px}
+body.seasonal-test-halloween .st-brand{color:#fff2e8}.st-subtitle{margin-top:8px;font-size:12px;color:#806d65;letter-spacing:.02em}.seasonal-test-halloween .st-subtitle{color:#dbc9c2}
+.st-header-actions{display:flex;gap:9px}.st-icon{width:46px;height:46px;border-radius:50%;border:1px solid rgba(96,70,58,.12);background:rgba(255,255,255,.86);box-shadow:0 6px 18px rgba(65,44,34,.08);font-size:21px;color:#76584c}.seasonal-test-halloween .st-icon{background:rgba(255,248,240,.12);color:#fff0e4;border-color:rgba(255,255,255,.14)}
+.st-main{width:min(100%,650px);margin:0 auto;padding:17px 20px 24px;flex:1}.st-hero{position:relative;min-height:224px;padding:19px 22px 23px;border:1px solid var(--st-border);border-radius:30px;overflow:hidden;box-shadow:0 14px 32px rgba(87,61,47,.10)}
+body.seasonal-test-autumn .st-hero{background:linear-gradient(145deg,rgba(255,251,244,.96),rgba(247,224,201,.95))}
+body.seasonal-test-halloween .st-hero{background:linear-gradient(145deg,rgba(48,36,57,.96),rgba(117,69,80,.95));border-color:rgba(255,235,214,.16);box-shadow:0 18px 38px rgba(29,17,35,.24)}
+.st-hero:after{content:"";position:absolute;inset:-30% -8% auto auto;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,rgba(224,145,73,.24),transparent 68%)}
+.st-hero-top{display:flex;justify-content:space-between;gap:12px;align-items:center;font-size:10px;letter-spacing:.15em;font-weight:800;color:#76584b}.st-hero-top b{letter-spacing:.03em;background:rgba(232,190,151,.36);padding:8px 14px;border-radius:99px;white-space:nowrap}.seasonal-test-halloween .st-hero-top{color:#f2ded4}.seasonal-test-halloween .st-hero-top b{background:rgba(255,218,179,.14);color:#ffe4cc}
+.st-hero-brand{position:absolute;right:23px;top:67px;font-family:"Noto Naskh Arabic","Amiri","Geeza Pro",serif;font-size:48px;font-weight:800;color:#d83f61;direction:rtl}.seasonal-test-halloween .st-hero-brand{color:#ff7180}.st-hero h1{margin:58px 0 2px;font-family:Georgia,serif;font-size:42px;line-height:1;color:#584039}.st-hero p{margin:0;font-size:16px;color:#8d7469}.seasonal-test-halloween .st-hero h1{color:#fff1e6}.seasonal-test-halloween .st-hero p{color:#e8d1c6}
+.st-shortcuts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:17px 0 28px}.st-shortcuts button{min-height:112px;border:1px solid rgba(114,77,57,.10);border-radius:24px;background:rgba(255,253,250,.93);box-shadow:0 8px 22px rgba(80,55,43,.07);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:#594840}.seasonal-test-halloween .st-shortcuts button{background:rgba(255,250,244,.96);color:#564448}.st-shortcut-icon{font-size:30px;line-height:1;color:var(--st-accent);font-family:system-ui}.st-shortcuts strong{font-size:15px}
+.st-today{border:1px solid rgba(111,76,57,.16);border-radius:27px;background:rgba(255,252,247,.94);box-shadow:0 12px 28px rgba(76,54,44,.09);overflow:hidden;color:#594840}.seasonal-test-halloween .st-today{background:rgba(255,249,242,.96)}
+.st-today-head{display:flex;align-items:center;justify-content:space-between;padding:21px 22px 13px}.st-today-head h2{font-family:Georgia,serif;font-size:27px;margin:0;color:#5a443c}.st-today-head span{text-transform:lowercase;color:#8e796f;font-size:12px}.st-meals{padding:0 15px}.st-meal{width:100%;min-height:83px;display:grid;grid-template-columns:48px 1fr 18px;align-items:center;gap:10px;background:transparent;border:0;border-bottom:1px solid rgba(111,76,57,.12);text-align:left;color:#5b4740}.st-meal-icon{font-size:30px;text-align:center}.st-meal-copy{display:flex;flex-direction:column;gap:4px}.st-meal-copy strong{font-size:16px}.st-meal-copy small{font-size:12px;color:#7e6b63}.st-chevron{font-size:29px;color:#a8948a}.st-program{margin:11px 15px 15px;width:calc(100% - 30px);height:55px;border:0;border-radius:15px;background:var(--st-accent);color:#fff;font-size:16px;font-weight:800;box-shadow:0 8px 16px rgba(226,82,56,.20)}.st-empty{padding:25px;text-align:center;color:#88736b}
+.st-bottom-nav{position:fixed;z-index:15;left:0;right:0;bottom:0;height:84px;padding:8px max(12px,env(safe-area-inset-left)) calc(8px + env(safe-area-inset-bottom));display:flex;justify-content:center;gap:4px;background:rgba(255,252,248,.96);backdrop-filter:blur(16px);border-top:1px solid rgba(100,75,65,.13)}.st-bottom-nav button{flex:1;max-width:120px;border:0;background:transparent;border-radius:17px;color:#87776f;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}.st-bottom-nav button span{font-size:24px;line-height:1}.st-bottom-nav button small{font-size:10px}.st-bottom-nav button.active{color:var(--st-accent);background:rgba(239,91,63,.09);font-weight:800}.seasonal-test-halloween .st-bottom-nav{background:rgba(255,249,243,.97)}
+.st-splash{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;overflow:hidden;opacity:1;transition:opacity .35s ease;background:#fff4e8}.st-splash:before{content:"🍂       🍁       🍂";position:absolute;top:7%;left:-4%;font-size:58px;letter-spacing:16px;opacity:.28;transform:rotate(-7deg)}.st-splash:after{content:"🎃     🕯️";position:absolute;right:-5%;bottom:7%;font-size:64px;opacity:.25;transform:rotate(5deg)}.seasonal-test-halloween .st-splash{background:linear-gradient(160deg,#2e2239,#6b4258 54%,#b66f52);color:#fff1e7}.seasonal-test-halloween .st-splash:before{content:"🌙   🦇   🦇";top:8%;left:auto;right:-5%;opacity:.28}.seasonal-test-halloween .st-splash:after{content:"🎃   🕯️";left:-4%;right:auto;bottom:8%;opacity:.32}.st-splash.is-done{opacity:0}.st-splash-card{width:min(82vw,350px);min-height:470px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border-radius:34px;background:rgba(255,250,244,.24);border:1px solid rgba(255,255,255,.58);box-shadow:0 22px 60px rgba(76,48,38,.12);backdrop-filter:blur(5px)}.seasonal-test-halloween .st-splash-card{background:rgba(44,30,53,.28);border-color:rgba(255,232,211,.22);box-shadow:0 24px 70px rgba(19,10,27,.25)}.st-chef{font-size:55px;color:var(--st-accent);margin-bottom:20px}.st-splash-title{font-family:"Noto Naskh Arabic","Amiri","Geeza Pro",serif;font-size:52px;font-weight:800;color:#d83f61;direction:rtl}.seasonal-test-halloween .st-splash-title{color:#fff0e7}.st-splash-title span{font-family:system-ui;font-size:16px;color:#f05b78}.st-splash-card p{margin:28px 0 18px;font-size:15px;line-height:1.5;color:#795f56}.seasonal-test-halloween .st-splash-card p{color:#ead2c6}.st-progress{width:115px;height:5px;border-radius:99px;background:rgba(157,102,84,.18);overflow:hidden}.st-progress i{display:block;width:52%;height:100%;background:var(--st-accent);border-radius:99px;animation:st-load 1.3s ease-in-out forwards}@keyframes st-load{from{width:0}to{width:72%}}
+@media(max-width:650px){.st-header{padding:18px 16px 14px}.st-brand{font-size:33px}.st-subtitle{font-size:11px}.st-icon{width:43px;height:43px}.st-main{padding:12px 14px 22px}.st-hero{min-height:220px;padding:17px 19px}.st-hero-top{font-size:8px}.st-hero-brand{font-size:43px;top:66px}.st-hero h1{font-size:38px;margin-top:58px}.st-hero p{font-size:14px}.st-shortcuts{gap:10px;margin:14px 0 22px}.st-shortcuts button{min-height:98px;border-radius:20px}.st-shortcut-icon{font-size:27px}.st-shortcuts strong{font-size:14px}.st-today-head{padding:18px 18px 10px}.st-today-head h2{font-size:24px}.st-meal{min-height:77px}.st-program{height:51px;font-size:15px}}
+@media(prefers-reduced-motion:reduce){.st-progress i{animation:none;width:70%}.st-splash{transition:none}}

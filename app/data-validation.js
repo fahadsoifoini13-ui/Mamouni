@@ -163,3 +163,11 @@
 
   return { STORE_NAMES, validateBackup };
 });
+
+/* Phase 1 DA test : charge les styles saisonniers après la validation, sans modifier la logique métier. */
+if (typeof document !== "undefined") {
+  const seasonalLink = document.createElement("link");
+  seasonalLink.rel = "stylesheet";
+  seasonalLink.href = "seasonal-test.css?v=autumn-halloween-r1";
+  document.head.appendChild(seasonalLink);
+}

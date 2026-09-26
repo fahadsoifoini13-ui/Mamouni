@@ -106,12 +106,12 @@ function inlineArg(value){return esc(JSON.stringify(String(value)))}
 
 let UNIT_WEIGHT_G = {"Pommes de terre":150};
 const SEASON_DECORATIONS={
-  spring:[["flower","top-left"],["leaf","right-top"],["flower","left-bottom"],["leaf","right-bottom"]],
-  summer:[["sun","top-right"],["leaf","left-top"],["flower","right-bottom"]],
-  autumn:[["leaf","top-left"],["pumpkin","top-right"],["mushroom","left-bottom"],["chestnut","right-bottom"],["candle","middle-right"],["leaf","middle-left"]],
-  winter:[["snowflake","top-left"],["candle","top-right"],["snowflake","left-bottom"],["flower","right-bottom"]]
+  spring:[["branch","top-left"],["blossom","top-right"],["sprig","middle-left"],["petal","right-bottom"]],
+  summer:[["sun","top-right"],["lemon","top-left"],["herb","left-bottom"],["orange","right-bottom"]],
+  autumn:[["branch","top-left"],["pumpkin","top-right"],["mushroom","left-bottom"],["chestnut","middle-left"],["candle","right-bottom"]],
+  winter:[["fir","top-left"],["snowflake","top-right"],["cinnamon","left-bottom"],["candle","right-bottom"],["sparkle","middle-right"]]
 };
-const HALLOWEEN_DECORATIONS=[["leaf","top-left"],["pumpkin","top-right"],["bat","middle-left"],["moon","middle-right"],["mushroom","left-bottom"],["ghost","right-bottom"],["sparkle","upper-middle"]];
+const HALLOWEEN_DECORATIONS=[["moon","top-right"],["pumpkin","top-left"],["bat","middle-left"],["candle","left-bottom"],["ghost","right-bottom"],["sparkle","middle-right"]];
 function renderSeasonalDecor(){
   const layer=document.getElementById("seasonalDecor");
   if(!layer)return;
@@ -128,6 +128,10 @@ function applySeason(theme,specialEvent=null,persist=true){
   document.body.dataset.season=effective;
   if(event)document.body.dataset.specialEvent=event;else delete document.body.dataset.specialEvent;
   appSettings={...appSettings,id:"app-settings",season:selected,specialEvent:event};
+  document.body.classList.remove("season-shift");
+  void document.body.offsetWidth;
+  document.body.classList.add("season-shift");
+  window.setTimeout(()=>document.body.classList.remove("season-shift"),900);
   renderSeasonalDecor();
   if(persist&&db)put("meta",appSettings).catch(()=>showToast("Le thème n’a pas pu être mémorisé sur cet appareil."));
 }
